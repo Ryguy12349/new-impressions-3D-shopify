@@ -2,7 +2,6 @@
 import CartIcon from "./cart/CartIcon.svelte";
 
 import Image from "astro/components/Image.astro";
-import logo from "../assets/Logo.png";
 ---
 
 <script>
@@ -43,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <nav>
       <a href="/" class="logo">
         <Image 
-          src={logo};
+          src="/Logo.png";
           alt="Home";
           height="40";
         />
