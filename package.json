@@ -23,6 +23,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "daisyui": "^5.5.19",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
