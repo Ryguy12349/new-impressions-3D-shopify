@@ -1,0 +1,38 @@
+---
+import { getProducts } from "./../utils/shopify";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Products from "../components/product/Products.astro";
+import { setCache } from "../utils/cache";
+
+const title = "Shop";
+const headers = Astro.request.headers;
+const ip = headers.get("x-vercel-forwarded-for") || 
+           headers.get("x-forwarded-for")?.split(",")[0].trim() || 
+           headers.get("cf-connecting-ip") ||
+           headers.get("client-ip") ||
+           Astro.clientAddress || 
+           "127.0.0.1";
+const products = await getProducts({ buyerIP: ip });
+
+setCache.short(Astro);
+
+import DigitalBackground from "../components/DigitalBackground.astro";
+import PageHead from "../components/PageHead.astro";
+
+---
+
+<BaseLayout title={title}>
+  <PageHead h1={title}/>
+  <DigitalBackground>
+    <Products products={products} />
+  </DigitalBackground>
+  <h2>Terms & Services</h2>
+  <p>
+    By purchasing from New Impressions, you agree to our terms and services. 
+    Please review our policies on shipping, returns, and product care before making a purchase. 
+    We are committed to providing high-quality products and excellent customer service. 
+    If you have any questions or concerns, please contact us at
+  </p>
+  <a href="/q&a">Q&A Form</a>
+
+</BaseLayout>

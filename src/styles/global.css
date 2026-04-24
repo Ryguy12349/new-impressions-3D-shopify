@@ -1,44 +1,23 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-@theme {
-  /* Animation */
-  --animate-shake: shake 0.5s infinite;
+@font-face {
+  font-family: 'Montserrat Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/montserrat:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
 
-  @keyframes shake {
-    0% {
-      transform: translate(1px, 1px) rotate(0deg);
-    }
-    10% {
-      transform: translate(-1px, -2px) rotate(-1deg);
-    }
-    20% {
-      transform: translate(-3px, 0px) rotate(1deg);
-    }
-    30% {
-      transform: translate(3px, 2px) rotate(0deg);
-    }
-    40% {
-      transform: translate(1px, -1px) rotate(1deg);
-    }
-    50% {
-      transform: translate(-1px, 2px) rotate(-1deg);
-    }
-    60% {
-      transform: translate(-3px, 1px) rotate(0deg);
-    }
-    70% {
-      transform: translate(3px, 1px) rotate(-1deg);
-    }
-    80% {
-      transform: translate(-1px, -1px) rotate(1deg);
-    }
-    90% {
-      transform: translate(1px, 2px) rotate(0deg);
-    }
-    100% {
-      transform: translate(1px, -2px) rotate(-1deg);
-    }
-  }
+@font-face {
+  font-family: 'Mallanna';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/mallanna@latest/latin-400-normal.woff2) format('woff2'),
+       url(https://cdn.jsdelivr.net/fontsource/fonts/mallanna@latest/latin-400-normal.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 
 @utility container {
@@ -51,33 +30,41 @@
     @apply scroll-smooth;
   }
 
-  body {
-    @apply flex min-h-screen flex-col;
-  }
+}
 
-  main {
-    @apply flex-1;
-  }
+:root {
+  box-sizing: border-box;
 
-  details > summary {
-    list-style: none;
-  }
-  details > summary::-webkit-details-marker {
-    display: none;
-  }
+  --color-paper-bg: #FAF7F5;
+  --color-paper-content: #04040f;
+  --color-digital-bg: #272628;
+  --color-digital-content: #e5e5e5;
 
-  *,
-  :before,
-  :after {
-    @apply border-gray-200;
-  }
+  --color-accent-1: #FF028F;
+  --color-accent-2: #0CFF00;
+  --color-accent-3: #FFE800;
+  --color-accent-4: #FB0101;
+  --color-accent-5: #00DDFF;
 
-  .button {
-    @apply flex items-center justify-center rounded-lg;
-    @apply bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-600;
-    @apply px-8 py-3 text-base font-medium text-white;
-    @apply transition hover:opacity-80;
-    @apply focus:ring-2 focus:ring-black focus:ring-offset-1 focus:outline-none;
-    @apply disabled:cursor-not-allowed disabled:opacity-60;
-  }
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat Variable';
+}
+
+h1 {font-size: 6rem; font-weight: 700;}
+h2 {font-size: 2rem; font-weight: 600;}
+p{font-family: 'Mallanna'; font-size: 1.5rem; line-height: 1.2;}
+a{font-family: 'Montserrat Variable'; font-size: 1.25rem; font-weight: 500;}
+
+.paper_pattern {
+  background-color: var(--color-paper-bg);
+  background-image: url('/paper_dot_pattern.png');
+  background-size: 10px 10px;
+  background-repeat: repeat;
+  color: var(--color-paper-content);
 }

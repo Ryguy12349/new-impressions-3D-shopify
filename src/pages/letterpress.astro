@@ -1,0 +1,43 @@
+---
+import DigitalBackground from "../components/DigitalBackground.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Letterpress";
+import PageHead from "../components/PageHead.astro";
+---
+
+<BaseLayout title={title}>
+    <PageHead h1={title}/>
+    <DigitalBackground>
+    
+    </DigitalBackground>
+
+    <h2>Press in Action</h2>
+    <p>The press has been run through many tests, both checking its ability to work and to durability under stress. 
+        Working well with simple prints, the press was designed to be within the standards of other small sheet letterpresses. 
+        This means you can use all typepieces on the press and even some chases fill nicely within our press.
+    </p>
+
+    <h2>Build it Yourself</h2>
+    <p>Being fully 3D printed, you can print and build it yourself for a little under $30, 
+        which is a 70% decrease from the lowest you would normally find online. We are offering the files to you for free, 
+        only with the hope that you will send us some photos and share the joy of this age-old craft with others.
+    </p>
+    <a href="/buildit">Find the Files and Build Guide Here</a>
+
+    <h2>Buy it Pre-Built</h2>
+	<p>Don’t have a 3D printer by want to learn, experiment, and play with a letterpress. 
+        Buy our pre-printed letterpress press from us for a little over the cost of printing,  
+        buying material, and shipping. If you're not a huge fan of what we have, but like the concept. 
+        We offer custom requests, a made press or typeface to your liking.
+	</p>
+	<a href="/shop">Visit our Shop or Make a Request Here</a>
+
+	<h2>Learn More</h2>
+    <p>
+        Wanna learn about other projects like our own? 
+        We have a list and explanation of each of our inspirations and friends in the community. 
+    </p>
+	<a href="/inspiration">Find our Inspiration Here</a>
+
+</BaseLayout>

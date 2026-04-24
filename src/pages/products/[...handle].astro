@@ -4,17 +4,22 @@ import { setCache } from "../../utils/cache";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NotFoundLayout from "../../layouts/NotFoundLayout.astro";
-import AddToCartForm from "../../components/AddToCartForm.svelte";
-import ProductImageGallery from "../../components/ProductImageGallery.astro";
-import ProductBreadcrumb from "../../components/ProductBreadcrumb.astro";
-import ProductInformations from "../../components/ProductInformations.astro";
-import ProductRecommendations from "../../components/ProductRecommendations.astro";
-import ProductReviews from "../../components/ProductReviews.astro";
-import ProductAccordions from "../../components/ProductAccordions.astro";
+import AddToCartForm from "../../components/cart/AddToCartForm.svelte";
+import ProductImageGallery from "../../components/product/ProductImageGallery.astro";
+import ProductBreadcrumb from "../../components/product/ProductBreadcrumb.astro";
+import ProductInformations from "../../components/product/ProductInformations.astro";
+import ProductRecommendations from "../../components/product/ProductRecommendations.astro";
+import ProductReviews from "../../components/product/ProductReviews.astro";
+import ProductAccordions from "../../components/product/ProductAccordions.astro";
 
 const { handle } = Astro.params;
 const headers = Astro.request.headers;
-const ip = headers.get("x-vercel-forwarded-for") || Astro.clientAddress;
+const ip = headers.get("x-vercel-forwarded-for") || 
+           headers.get("x-forwarded-for")?.split(",")[0].trim() || 
+           headers.get("cf-connecting-ip") ||
+           headers.get("client-ip") ||
+           Astro.clientAddress || 
+           "127.0.0.1";
 const product = await getProductByHandle({ handle: handle || "", buyerIP: ip });
 
 if (!product) {

@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import DigitalBackground from "../components/DigitalBackground.astro";
+
+import Image from "astro/components/Image.astro";
+
+const title = "About";
+import PageHead from "../components/PageHead.astro";
+
+---
+
+<BaseLayout title={title}>
+    <PageHead h1={title}/>
+    <DigitalBackground>
+        <div class="grid col-3">
+
+        </div>
+    </DigitalBackground>
+
+    <h2>Where it started</h2>
+	<p>
+		This project started with the question, “What are you going to do for your thesis?” 
+        My answer, of course, my answer was “I don’t know, probably something with my collection of quotes in my notes app.” 
+        Kick off to a week later, and the realization that I spent my whole savings on a 3D printer, 
+        it became clear to me that I need to use my printer to connect my major thesis with my DDF minor.
+	</p>
+    <p>
+        The connection between major and minor skills led me down the path to a documentary project now known a New Impressions. 
+        Documenting my growth in connecting and combining skills through the goal my building an almost fully 3D printed letterpress. 
+        This letterpress would work both with old letterpress equipment and would have a full set of its own tools.
+	</p>
+
+    <h2>Intents & Goals</h2>
+    <p>
+        New Impressions is a project based on the idea of creating a cheap, highly portable, 
+        letterpress setup from typepieces to quoin to the press itself. 
+        All of this needed to be 3D printable and devoid of lead.
+    </p>
+
+    <a href="https://2026show.newpaltz.design/projects/new-impressions/"> View my project page</a>
+    <a href="https://2026show.newpaltz.design/"> View our class</a>
+    
+    <h2>Achievements</h2>
+
+</BaseLayout>

@@ -1,9 +1,9 @@
 import { z } from "zod";
 
 export const configSchema = z.object({
-  shopifyShop: z.string(),
-  publicShopifyAccessToken: z.string(),
-  privateShopifyAccessToken: z.string(),
+  shopifyShop: z.string().optional().default(""),
+  publicShopifyAccessToken: z.string().optional().default(""),
+  privateShopifyAccessToken: z.string().optional().default(""),
   apiVersion: z.string(),
 });
 
@@ -58,7 +58,7 @@ export const VariantResult = z.object({
   id: z.string(),
   title: z.string(),
   availableForSale: z.boolean(),
-  quantityAvailable: z.number().int(),
+  quantityAvailable: z.number().int().optional(),
   price: MoneyV2Result,
 });
 

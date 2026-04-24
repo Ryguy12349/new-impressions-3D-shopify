@@ -1,23 +1,164 @@
 ---
-import Logo from "./Logo.astro";
-import CartIcon from "./CartIcon.svelte";
+import CartIcon from "./cart/CartIcon.svelte";
+
+import Image from "astro/components/Image.astro";
+import logo from "../../public/Logo.png";
 ---
 
-<header class="sticky top-0 z-40">
-  <div class="border-b bg-white/70 py-3 backdrop-blur-2xl">
-    <nav class="container grid grid-cols-3 items-center">
-      <a href="/">
-        <span class="sr-only">Logo</span>
-        <Logo />
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const openBtn = document.getElementById('op-btn-page-nav')
+
+  openBtn?.addEventListener("click", function (){
+    document.getElementById('page-nav')?.classList.toggle('open'); 
+    document.getElementById('page-nav')?.classList.toggle('paper_pattern'); 
+    document.getElementById('backdrop')?.classList.toggle('hidden');
+    document.querySelector("body")?.classList.toggle('overflow-hidden');
+    console.log("waiting - menu should be open now");
+    
+    // Simple delay
+    setTimeout(() => {
+      const firstLink = document.querySelector("#page-nav a");
+      console.log("Focus target:", firstLink);
+      firstLink?.focus();
+      console.log("Active element after focus:", document.activeElement);
+    }, 100);
+  });
+
+
+  document.getElementById('backdrop')?.addEventListener("click", function(){
+    document.getElementById('page-nav')?.classList.toggle('open');
+    document.getElementById('page-nav')?.classList.toggle('paper_pattern');
+    document.getElementById('backdrop')?.classList.toggle('hidden');
+    document.querySelector("body")?.classList.toggle('overflow-hidden');
+  });
+});
+</script>
+
+<div
+  id="backdrop"
+  class="fixed inset-0 bg-slate-400/50 backdrop-blur-sm transition-opacity duration-300 hidden z-1"
+></div>
+<header class="paper_pattern">
+    <nav>
+      <a href="/" class="logo">
+        <Image 
+          src={logo};
+          alt="Home";
+          height="40";
+        />
       </a>
-      <h1
-        class="flex justify-center text-sm font-semibold text-gray-900 sm:text-xl"
-      >
-        Astro 🧑‍🚀 Shopify
-      </h1>
-      <div class="justify-self-end">
+      <div id="cart-page-nav">
+          <ul id="page-nav" tabindex="-1" class="">
+            <li><a id="first_nav_item" tabindex="-1" href="/about" class="page-nav-items">About</a></li>
+            <li><a href="/letterpress" class="page-nav-items">Letterpress</a></li>
+            <li><a href="/typepieces" class="page-nav-items">Typepieces</a></li>
+            <li><a href="/documentation" class="page-nav-items">Documentation</a></li>
+            <li><a href="/shop" class="page-nav-items">Shop</a></li>
+          </ul>
         <CartIcon client:load />
+        <button aria-label="Open Page Menu" id="op-btn-page-nav" >
+              <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z"/></svg>
+        </button>
       </div>
     </nav>
-  </div>
 </header>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border: 1px solid var(--color-paper-content);
+    border-width: 0 0 1px 0;
+  }
+
+  nav{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
+
+  .logo{
+    height: 2.5rem;
+
+  }
+
+  #page-nav {
+    display: flex;
+    align-items:center;
+    gap: 1rem;
+
+    & a:focus-visible {
+      outline: 3px solid var(--color-paper-content);
+      outline-offset: 2px;
+    }
+  }
+
+  #cart-page-nav {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  li{
+    list-style: none;
+  }
+
+  #op-btn-page-nav {
+    display: none;
+    fill: var(--color-paper-content);
+  }
+
+  @media (max-width: 700px) {
+    #cart-page-nav {
+      flex-flow: row nowrap;
+    }
+
+    #page-nav {
+      position: fixed;
+      z-index: 9999;
+      top: calc(3.5rem + 1px);
+      right: 0;
+      height: 100vh;
+      width: 92.5vw;
+      padding: 0 0 0 1rem;
+      background-color: var(--color-paper-bg);
+      border: 1px solid var(--color-paper-content);
+      border-width: 0 0 0 1px;
+      flex-direction: column;
+      align-items: flex-start;
+      display: none;
+
+      &:focus {
+        outline: 3px solid var(--color-paper-content);
+      }
+
+      &.open {
+        display: flex !important;
+        gap: 0;
+        animation: slideIn 0.3s ease-in-out;
+      }
+      
+      & li {
+        padding: .5rem;
+      }
+    }
+
+    #op-btn-page-nav {
+      display: flex !important;
+    }
+
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+</style>
