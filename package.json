@@ -11,6 +11,12 @@
     "astro": "astro",
     "typecheck": "tsc --noEmit"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp",
+      "esbuild"
+    ]
+  },
   "dependencies": {
     "@astrojs/svelte": "^7.2.5",
     "@astrojs/vercel": "^9.0.4",
