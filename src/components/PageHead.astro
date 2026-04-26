@@ -3,30 +3,20 @@ const { h1 = "" } = Astro.props;
 
 import Image from "astro/components/Image.astro";
 
-import About from '../assets/pageHeads/about_header.webp';
-import BuildIt from '../assets/pageHeads/build_it_header.webp';
-import Documentation from '../assets/pageHeads/documentation_header.webp';
-import Letterpress from '../assets/pageHeads/letterpress_header.webp';
-import QA from '../assets/pageHeads/qa_header.webp';
-import Shop from '../assets/pageHeads/shop_header.webp';
-import TypePieces from '../assets/pageHeads/typepieces_header.webp';
-
-// Map exact page titles to images - explicit mapping avoids case/key issues
-const imageMap: Record<string, ImageMetadata> = {
-  "About": About,
-  "Build It": BuildIt,
-  "Documentation": Documentation,
-  "Letterpress": Letterpress,
-  "Q&A": QA,
-  "Shop": Shop,
-  "Type Pieces": TypePieces,
+const imageMap = {
+  "About": "/pageHeads/about_header.webp",
+  "Build It": "/pageHeads/build_it_header.webp",
+  "Documentation": "/pageHeads/documentation_header.webp",
+  "Letterpress": "/pageHeads/letterpress_header.webp",
+  "Q&A": "/assets/pageHeads/qa_header.webp",
+  "Shop": "/pageHeads/shop_header.webp",
+  "Type Pieces": "/pageHeads/typepieces_header.webp",
 };
 
-// Use the original h1 key directly instead of transforming
-const imageSrc = imageMap[h1] ?? About;
+const imageSrc = imageMap[h1] ?? "/pageHeads/about_header.webp";
 ---
 
 <section id="hero">
     <h1>{h1}</h1>
-    <Image src={imageSrc} alt="" />
+    <Image src={imageSrc} alt="" width="800px" height="800px"/>
 </section>

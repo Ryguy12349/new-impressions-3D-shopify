@@ -3,8 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import DigitalBackground from "../components/DigitalBackground.astro";
 
 import { Image } from "astro:assets";
-import Img1 from "../assets/index_2.jpg"
-import Img2 from "../assets/index_1.jpg";
 
 const title = "3D Printed Letterpress & Type Pieces";
 ---
@@ -39,8 +37,10 @@ const title = "3D Printed Letterpress & Type Pieces";
 
     <section id="letterpress" class="paper_section">
         <Image
-        src={Img1}
+        src="/index_1.jpg"
         alt=""
+        width={1200}
+        height={800}
         />
         <div class="paper_text_container">
             <div class="paper_text_wrapper">
@@ -53,8 +53,10 @@ const title = "3D Printed Letterpress & Type Pieces";
 
     <section id="typepieces" class="paper_section">
         <Image
-        src={Img2}
+        src="/index_2.jpg"
         alt=""
+        width={1200}
+        height={800}
         />
         <div class="paper_text_container">
             <div class="paper_text_wrapper">
@@ -86,7 +88,7 @@ const title = "3D Printed Letterpress & Type Pieces";
     }
 
     .paper_section{
-        margin: 4rem auto 5rem;
+        margin: 6rem auto 5rem;
         max-width: 100%;
         display: flex;
         gap: .25rem;
@@ -103,6 +105,7 @@ const title = "3D Printed Letterpress & Type Pieces";
 
     .paper_section img {
         max-width: 100%;
+        max-height:400px;
         object-fit: cover;
         object-position: 50% 45%;
     }
