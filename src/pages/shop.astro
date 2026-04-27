@@ -18,21 +18,30 @@ setCache.short(Astro);
 
 import DigitalBackground from "../components/DigitalBackground.astro";
 import PageHead from "../components/PageHead.astro";
-
+import LinkBtn from "../components/linkbtn.astro";
 ---
 
 <BaseLayout title={title}>
-  <PageHead h1={title}/>
-  <DigitalBackground>
-    <Products products={products} />
-  </DigitalBackground>
-  <h2>Terms & Services</h2>
-  <p>
-    By purchasing from New Impressions, you agree to our terms and services. 
-    Please review our policies on shipping, returns, and product care before making a purchase. 
-    We are committed to providing high-quality products and excellent customer service. 
-    If you have any questions or concerns, please contact us at
-  </p>
-  <a href="/q&a">Q&A Form</a>
+<PageHead h1={title}/>
+<DigitalBackground>
+  <Products products={products} />
+</DigitalBackground>
+<section id="miniTerms" class="paper_section">
+  <div class="text_container">
+    <div>
+      <h2>Terms & Services</h2>
+      <p>
+        By purchasing from New Impressions, you agree to our terms and services. 
+        Please review our policies on shipping, returns, and product care before making a purchase. 
+        We are committed to providing high-quality products and excellent customer service. 
+        If you have any questions or concerns, please contact us at
+      </p>
+    </div>
+    <div class="two_links">
+      <LinkBtn url="/q&a">Q&A Form</LinkBtn>
+      <LinkBtn url="/terms&services">Terms & Services</LinkBtn>
+    </div>
+  </div>
+</section>
 
 </BaseLayout>

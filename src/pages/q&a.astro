@@ -8,14 +8,15 @@ import PageHead from "../components/PageHead.astro";
 ---
 
 <BaseLayout title={title}>
-    <PageHead h1={title}/>
-
+<PageHead h1={title}/>
+<div class="text_container">
     Don’t want to build the press, and our prebuilt options aren’t enough! Make a custom request
-Send Us a Custom Request
-Email us at our own email service at ******@newimpression.com, or fill out this form. If you need some guidance on what to write to us, look below and find our guide on what we need to know from you.
+    Send Us a Custom Request
+</div>
 <DigitalBackground>
-    <div class="email-form">
+    <div class="email-form text_container">
         <h2>Send Me a Message</h2>
+        <p>Email us at our own email service at ******@newimpression.com, or fill out this form. If you need some guidance on what to write to us, look below and find our guide on what we need to know from you.</p>
         <form name="contact" method="POST" netlify?>
             <div class="contact-sender-info">
                 <div class="contact-name-box">
@@ -39,3 +40,104 @@ Email us at our own email service at ******@newimpression.com, or fill out this 
 </DigitalBackground>
 
 </BaseLayout>
+
+<style>
+     .email-form{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .email-form form{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 60%;
+    }
+
+    .email-form h2, .email-form p {
+        color: var(--color-digital-content);
+    }
+
+    #message {
+        resize: vertical;
+    }
+
+    #name, #email, #message {
+        width: 100%;
+    }
+
+    #submit {
+        padding: .5rem 1rem;
+        border: 1px solid var(--color-digital-content);
+        border-radius: 5px;
+        background-color: var(--color-digital-bg);
+        color: var(--color-digital-content);
+        font-family: 'faustina variable', serif;
+        font-weight: bold;
+    }
+
+    #submit:hover {
+        background-color: var(--color-digital-content);
+        color: var(--color-digital-bg);
+    }
+
+    .contact-submit-box {
+        align-self: flex-end;
+
+    }
+
+    .contact-sender-info {
+        display: flex;
+        flex-direction: row;
+        gap: .5rem;
+    }
+
+    .contact-name-box, .contact-email-box  {
+        position: relative;
+        margin-bottom: .5rem;
+        color: var(--color-digital-content);
+    }
+
+    .contact-message-box {
+        position: relative;
+        color: var(--color-digital-content);
+    }
+
+    .contact-label {
+        position: absolute;
+        top: -.75rem;
+        left: .75rem;
+        font-family: 'faustina variable', serif;
+        font-weight: bold;
+        color: var(--color-digital-content);
+        background-color: var(--color-digital-bg);
+        padding: 0 .5rem;
+    }
+
+    .contact-input{
+        font-family: 'faustina variable', serif;
+        background-color: var(--color-digital-bg);
+        border: 1px solid var(--color-digital-content);
+        border-radius: 5px;
+        padding: .5rem;
+    }
+
+    @media (max-width: 470px) {
+        .contact-sender-info {
+            flex-direction: column;
+        }
+
+        .business-card-scene {
+            --card-width: 280px;
+        }
+    
+        #submit{
+            font-size: 1rem;
+        }
+
+        .email-form form{
+            width: 100%;
+        }
+    }
+</style>

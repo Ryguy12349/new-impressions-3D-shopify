@@ -2,11 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import DigitalBackground from "../components/DigitalBackground.astro";
 
-import TimelineContainer from "../components/timeline/TimelineContainer.astro";
-import TimelineParts from "../components/timeline/TimelineParts.astro";
-
 const title = "Documentation";
 import PageHead from "../components/PageHead.astro";
+
+import { Image } from "astro:assets";
 
 ---
 
@@ -14,161 +13,298 @@ import PageHead from "../components/PageHead.astro";
     <PageHead h1={title}/>
     <DigitalBackground>
     
+        <iframe width="300" height="400" src="https://docs.google.com/document/d/e/2PACX-1vSBW-XKQmvC0N_YXJayXSzY9tdKdDJl1VQuqizFO21sd2MO6JbePKGmF2EP0yYDINXeIjhVVpM8c2j4/pub?embedded=true">
+        </iframe>
+
+        <div>
+            <h2>Project Version:</h2>
+            <p>2.00.4</p>
+        </div>
+
+        <Image
+            src="/documentation_1.png"
+            alt=""
+            width="1920"
+            height="800"
+        />
     </DigitalBackground>
-  
-<TimelineContainer>
     
-    <TimelineParts date="9/1">
+    <h2>9/8"</h2>
         <div class="img_grid">
-            <!-- Content for 9/1 -->
+            <Image
+                src="/timeline/9-8_1.jpg"
+                alt="",
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="9/8">
+    <h2>9/15</h2>
         <div class="img_grid">
-            <!-- Content for 9/8 -->
+            <Image
+                src="/timeline/9-15_1.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="9/15">
+    <h2>9/22</h2>
         <div class="img_grid">
-            <!-- Content for 9/15 -->
+            <Image
+                src="/timeline/9-22_1.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="9/22">
+    <h2>9/29</h2>
         <div class="img_grid">
-            <!-- Content for 9/22 -->
+            <Image
+                src="/timeline/9-29_1.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/9-29_2.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/9-29_3.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/9-29_4.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="9/29">
+    <h2>10/6</h2>
         <div class="img_grid">
-            <!-- Content for 9/29 -->
+            <Image
+                src="/timeline/10-6_1.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/10-6_2.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/10-6_3.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/10-6_4.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="10/6">
+    <h2>10/20</h2>
         <div class="img_grid">
-            <!-- Content for 10/6 -->
+            <video controls width="300" height="auto" muted>
+                <source src="/timeline/10-20_1.webm" type="video/webm"/>
+            </video>
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="10/20">
+    <h2>10/27</h2>
         <div class="img_grid">
-            <!-- Content for 10/20 -->
+            <Image
+                src="/timeline/10-27_1.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/10-27_2.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/10-27_3.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="10/27">
+
+    <h2>11/10</h2>>
         <div class="img_grid">
-            <!-- Content for 10/27 -->
+            <Image
+                src="/timeline/11-10_1.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/11-10_2.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/11-10_3.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="11/2">
+    <h2>12/8</h2>
         <div class="img_grid">
-            <!-- Content for 11/2 -->
+            <Image
+                src="/timeline/12-8_1.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/12-8_2.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/12-8_3.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/12-8_4.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="11/17">
+    <h2>Winter Inbetweens</h2>
         <div class="img_grid">
-            <!-- Content for 11/17 -->
+            <Image
+                src="/timeline/winter_1.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/winter_2.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/winter_3.JPG"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/winter_4.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="12/8">
+    <h2>3/5"</h2>
         <div class="img_grid">
-            <!-- Content for 12/8 -->
+            <Image
+                src="/timeline/z_3-5_1.png"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/z_3-5_2.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/z_3-5_3.png"
+                alt=""
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="12/18">
+    <h2>3/26</h2>
         <div class="img_grid">
-            <!-- Content for 12/18 -->
+            <Image
+                src="/timeline/z_3-26_1.png"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/z_3-26_2.png"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/z_3-26_3.png"
+                alt=""
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="Winter Inbetweens">
+    <h2>Spring Break</h2>
         <div class="img_grid">
-            <!-- Content for Winter Inbetweens -->
+            <Image
+                src="/timeline/z_spring_1.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/z_spring_2.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="1/29">
+    <h2>4/9"</h2>
         <div class="img_grid">
-            <!-- Content for 1/29 -->
+            <Image
+                src="/timeline/zz_4-9_1.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/zz_4-9_2.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
+            <Image
+                src="/timeline/zz_4-9_3.jpg"
+                alt=""
+                width="300"
+                height="300"
+            />
         </div>
-    </TimelineParts>
 
-    <TimelineParts date="2/5">
-        <div class="img_grid">
-            <!-- Content for 2/5 -->
-        </div>
-    </TimelineParts>
-
-    <TimelineParts date="2/12">
-        <div class="img_grid">
-            <!-- Content for 2/12 -->
-        </div>
-    </TimelineParts>
-
-    <TimelineParts date="2/19">
-        <div class="img_grid">
-            <!-- Content for 2/19 -->
-        </div>
-    </TimelineParts>
-
-    <TimelineParts date="2/26">
-        <div class="img_grid">
-            <!-- Content for 2/26 -->
-        </div>
-    </TimelineParts>
-
-    <TimelineParts date="3/5">
-        <div class="img_grid">
-            <!-- Content for 3/5 -->
-        </div>
-    </TimelineParts>
-
-    <TimelineParts date="3/26">
-        <div class="img_grid">
-            <!-- Content for 3/26 -->
-        </div>
-    </TimelineParts>
-
-    <TimelineParts date="Spring Break">
-        <div class="img_grid">
-            <!-- Content for Spring Break -->
-        </div>
-    </TimelineParts>
-
-    <TimelineParts date="4/9">
-        <div class="img_grid">
-            <!-- Content for 4/9 -->
-        </div>
-    </TimelineParts>
-
-    <TimelineParts date="4/17">
-        <div class="img_grid">
-            <!-- Content for 4/17 -->
-        </div>
-    </TimelineParts>
-
-    <TimelineParts date="4/23">
-        <div class="img_grid">
-            <!-- Content for 4/23 -->
-        </div>
-    </TimelineParts>
-
-    <TimelineParts date="5/1">
-        <div class="img_grid">
-            <!-- Content for 5/1 -->
-        </div>
-    </TimelineParts>
-
-</TimelineContainer>
 
 </BaseLayout>
 

@@ -3,105 +3,78 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import DigitalBackground from "../components/DigitalBackground.astro";
 
 import { Image } from "astro:assets";
+import LinkBtn from "../components/linkbtn.astro";
 
 const title = "3D Printed Letterpress & Type Pieces";
 ---
 
 <BaseLayout title={title}>
 
-    <DigitalBackground bgImage="/index_digital_backdrop.webp">
-        <div class="digi_grid">
-            <section id="about" class="digital_section">
-                <div class="digital_wrapper">
-                    <h2>About</h2>
-                    <p>
-                        The letterpress is an object of history with an extreme importance in how our societies grew as a whole; 
-                        printing found itself becoming a form of sculpting through 3D Printing. 
-                        New Impressions is a project about using 3D Printing to rebuild it’s ancestor the letterpress.
-                    </p>
-                </div>
-                <a href="/about">Learn About New Impressions</a>
-            </section>
-            <section id="documentation" class="digital_section">
-                <div class="digital_wrapper">
-                    <h2>Documentation</h2>
-                    <p>
-                        To track my growth and continued learning in CAD, 3D modeling, printing, and design, I’ve formed multiple systems and methods to document my practice. 
-                        Through timelines, videos, and this web page, follow me through the process of continued growth.
-                    </p>
-                </div>
-                <a href="/documentation">Our Growth</a>
-            </section>
-        </div>
-    </DigitalBackground>
-
-    <section id="letterpress" class="paper_section">
-        <Image
-        src="/index_1.jpg"
-        alt=""
-        width={1200}
-        height={800}
-        />
-        <div class="paper_text_container">
-            <div class="paper_text_wrapper">
-                <h2>Letterpress</h2>
-                <p>Designed and tested against Letterpress's new and old, this is New Impressions’ 3D Printed Letterpress. See the press in action, download the build files, or buy it from us, printed & ready to build.</p>
+<DigitalBackground bgImage="/index_digital_backdrop.webp">
+    <div class="digi_grid">
+        <section id="about" class="digital_section text_container">
+            <div class="text_wrapper">
+                <h2>About</h2>
+                <p>
+                    The letterpress is an object of history with an extreme importance in how our societies grew as a whole; 
+                    printing found itself becoming a form of sculpting through 3D Printing. 
+                    New Impressions is a project about using 3D Printing to rebuild it’s ancestor the letterpress.
+                </p>
             </div>
-            <a href="/letterpress">3D Printed Letterpress</a>
-        </div>
-    </section>
-
-    <section id="typepieces" class="paper_section">
-        <Image
-        src="/index_2.jpg"
-        alt=""
-        width={1200}
-        height={800}
-        />
-        <div class="paper_text_container">
-            <div class="paper_text_wrapper">
-                <h2>Typepieces</h2>
-                <p> Don’t have a letterpress studio yet or the endless font selection that comes with it. See our type pieces guide & hear our concerns about it, download the build files, or buy it from us, printed & ready to go.</p>
+            <LinkBtn url="/about">Learn About New Impressions</LinkBtn>
+        </section>
+        <section id="documentation" class="digital_section text_container">
+            <div class="text_wrapper">
+                <h2>Documentation</h2>
+                <p>
+                    To track my growth and continued learning in CAD, 3D modeling, printing, and design, I’ve formed multiple systems and methods to document my practice. 
+                    Through timelines, videos, and this web page, follow me through the process of continued growth.
+                </p>
             </div>
-            <a href="/typepieces">3D Printed Type Pieces</a>
+            <LinkBtn url="/documentation">Our Growth</LinkBtn>
+        </section>
+    </div>
+</DigitalBackground>
+
+<section id="letterpress" class="paper_section">
+    <Image
+    src="/index_1.jpg"
+    alt=""
+    width={1200}
+    height={800}
+    />
+    <div class="text_container">
+        <div class="text_wrapper">
+            <h2>Letterpress</h2>
+            <p>Designed and tested against Letterpress's new and old, this is New Impressions’ 3D Printed Letterpress. See the press in action, download the build files, or buy it from us, printed & ready to build.</p>
         </div>
-    </section>
+        <LinkBtn url="/letterpress">3D Printed Letterpress</LinkBtn>
+    </div>
+</section>
+
+<section id="typepieces" class="paper_section">
+    <Image
+    src="/index_2.jpg"
+    alt=""
+    width={1200}
+    height={800}
+    />
+    <div class="text_container">
+        <div class="text_wrapper">
+            <h2>Typepieces</h2>
+            <p> Don’t have a letterpress studio yet or the endless font selection that comes with it. See our type pieces guide & hear our concerns about it, download the build files, or buy it from us, printed & ready to go.</p>
+        </div>
+        <LinkBtn url="/typepieces">3D Printed Type Pieces</LinkBtn>
+    </div>
+</section>
 
 </BaseLayout>
 
 <style>
-    .digi_grid {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        row-gap: 5rem;
-    }
 
     #about, #documentation {
         grid-column:1 / 13 ;
     } 
-
-    .digital_section {
-        background-color: rgb(from var(--color-paper-bg) r g b / .85);
-        border-radius: .5rem;
-
-    }
-
-    .paper_section{
-        margin: 6rem auto 5rem;
-        max-width: 100%;
-        display: flex;
-        gap: .25rem;
-    }
-
-    .digital_section, .paper_text_container {
-        display: flex;
-        flex-direction: column;
-        gap: .5rem;
-        justify-content: center;
-        align-items: flex-end;
-        padding: .5rem;
-    }
 
     .paper_section img {
         max-width: 100%;
@@ -116,10 +89,6 @@ const title = "3D Printed Letterpress & Type Pieces";
 
     @media (min-width: 700px ) {
 
-        .digital_section, .paper_text_container {
-            padding: 1.5rem;
-        }
-
         #about {
             grid-column: 3 / 9 ;
         }
@@ -128,12 +97,6 @@ const title = "3D Printed Letterpress & Type Pieces";
             grid-column: 5 / 11 ;
         }
 
-        .paper_section {
-            max-width: 66.67%;
-            gap: 3rem;
-            max-height: 500px;
-        }
- 
         #letterpress {
             flex-direction: row;
         }
