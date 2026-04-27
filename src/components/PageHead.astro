@@ -8,7 +8,7 @@ const imageMap = {
   "Build It": "/pageHeads/build_it_header.webp",
   "Documentation": "/pageHeads/documentation_header.webp",
   "Letterpress": "/pageHeads/letterpress_header.webp",
-  "Q&A": "/assets/pageHeads/qa_header.webp",
+  "Q&A": "/pageHeads/qa_header.webp",
   "Shop": "/pageHeads/shop_header.webp",
   "Type Pieces": "/pageHeads/typepieces_header.webp",
   "Inspirations": "/pageHeads/inspo_header.webp",
@@ -31,6 +31,9 @@ const imageSrc = imageMap[h1] ?? "/pageHeads/about_header.webp";
       
       if (calculatedSize < 30) {
         const quickmath = calculatedSize + 8;
+        h1El.style.fontSize = `${quickmath}px`;
+      } else if (calculatedSize > 300) {
+        const quickmath = calculatedSize - calculatedSize/1.5;
         h1El.style.fontSize = `${quickmath}px`;
       } else {
         h1El.style.fontSize = `${calculatedSize}px`;
