@@ -17,11 +17,6 @@
       document.body.classList.remove("overflow-hidden");
     }
 
-    return () => {
-      if (typeof document !== 'undefined') {
-        document.body.classList.remove("overflow-hidden");
-      }
-    };
   });
 
   let cartIsUpdatingClass = $derived($isCartUpdating ? "opacity-50 pointer-events-none" : "");
@@ -150,7 +145,7 @@
 
 <style>
   .fixed-control {
-      top: 4rem;
+      top: 3.5rem;
       right: 0px;
   }
 </style>

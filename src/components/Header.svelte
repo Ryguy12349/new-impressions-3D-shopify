@@ -103,8 +103,12 @@
     padding: 0.5rem;
   }
 
+  .logo{
+    margin-bottom:0;
+  }
+
   .logo img {
-    max-height: 2.5rem;
+    max-height: 2rem;
   }
 
   #page-nav {
@@ -122,7 +126,7 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    gap: 1rem;
+    gap: .5rem;
   }
 
   li {
@@ -141,7 +145,7 @@
     #page-nav {
       position: fixed;
       z-index: 90;
-      top: 65px; 
+      top: 3.5625rem; 
       right: 0;
       height: 100vh;
       width: 92.5vw;
