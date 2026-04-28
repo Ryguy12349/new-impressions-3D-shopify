@@ -1,3 +1,4 @@
+// cart.ts
 import type { z } from "zod";
 import { atom } from "nanostores";
 import { persistentAtom } from "@nanostores/persistent";

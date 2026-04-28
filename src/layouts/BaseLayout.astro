@@ -1,5 +1,5 @@
 ---
-import Header from "../components/Header.astro";
+import Header from "../components/Header.svelte";
 import Footer from "../components/Footer.astro";
 import CartDrawer from "../components/cart/CartDrawer.svelte";
 import AnnouncementBar from "../components/AnnouncementBar.astro";
@@ -30,8 +30,8 @@ const tabTitle = `${title} | New Impressions`;
   </head>
   <body class="paper_pattern">
     <!-- <AnnouncementBar /> -->
-    <CartDrawer client:idle />
-    <Header title={title} />
+    <CartDrawer client:only="svelte" />
+    <Header client:load />
     <main>
       <slot />
     </main>
