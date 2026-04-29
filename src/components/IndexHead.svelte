@@ -150,9 +150,10 @@
 
   #hero-title {
     position: absolute;
-    top: 5%;
+    top: 20%;
     width: 100%;
-    text-align: center;
+    padding-left: 7.5%;
+    text-align: left;
     font-size: clamp(2rem, 12vw, 6rem);
     font-weight: bold;
     z-index: 25;
@@ -164,15 +165,16 @@
     max-height: 45vh;
     width: auto;
     max-width: 90vw;
+    padding: 5rem 1.5rem 0;
     object-fit: contain;
     z-index: 20;
   }
 
-  @media (min-width: 701px) {
+  @media (min-width: 700px) {
     #hero { height: 65vh; }
     .marquee_wrapper { width: 110vw; }
     .conveyor img { height: 85px; }
-    #hero-title { font-size: clamp(5rem, 15vw, 10rem); }
+    #hero-title { top: 10%; font-size: clamp(5rem, 15vw, 10rem); }
   }
 
   @media (prefers-reduced-motion: reduce) {
