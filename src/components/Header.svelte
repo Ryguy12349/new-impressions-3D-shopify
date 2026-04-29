@@ -134,6 +134,7 @@
 
   .logo{
     margin-bottom:0;
+    width: fit-content;
   }
 
   .logo img {
