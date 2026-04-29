@@ -63,7 +63,7 @@
   ></div>
 {/if}
 
-<header class="paper_pattern relative z-[100]" style="border: 5px solid red !important; min-height: 50px; background: blue;">
+<header class="paper_pattern relative z-[100]">
   <nav>
     <a href="/" class="logo transition-transform hover:scale-105">
       <img src="/Logo.png" alt="Home" />
