@@ -1,8 +1,8 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
+  import { untrack } from "svelte"; 
   import CartIcon from "./cart/CartIcon.svelte";
   import { clickOutside } from "../utils/click-outside";
-  // 1. IMPORT THE CART STORE
   import { isCartDrawerOpen } from "../stores/cart";
 
   let isOpen = $state(false);
@@ -11,7 +11,6 @@
   function toggleMenu() {
     isOpen = !isOpen;
 
-    // 2. IF OPENING MENU, CLOSE CART
     if (isOpen) {
       isCartDrawerOpen.set(false);
     }
@@ -21,7 +20,37 @@
     isOpen = false;
   }
   
-  // ... rest of your script ...
+  function onKeyDown(event: KeyboardEvent) {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  }
+
+  // --- RESTORED SIDE EFFECTS ---
+  $effect(() => {
+    if (isOpen) {
+      // 1. Lock scroll
+      document.body.classList.add('overflow-hidden');
+      
+      // 2. Move focus to the first link for accessibility
+      // untrack prevents this effect from re-running if firstLinkEl changes
+      untrack(() => {
+        requestAnimationFrame(() => {
+          setTimeout(() => firstLinkEl?.focus(), 60);
+        });
+      });
+    } else {
+      // 3. Unlock scroll when closed
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Cleanup: ensures scroll is unlocked if component is destroyed
+    return () => {
+      if (typeof document !== 'undefined') {
+        document.body.classList.remove('overflow-hidden');
+      }
+    };
+  });
 </script>
 
 {#if isOpen}
