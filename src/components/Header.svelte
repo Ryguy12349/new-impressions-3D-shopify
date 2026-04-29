@@ -80,12 +80,12 @@
         role="menu"
       >
         <li class="transition-transform hover:scale-105">
-          <a bind:this={firstLinkEl} href="/about" class="page-nav-items">About</a>
+          <a bind:this={firstLinkEl} href="/about"><span class="page-nav-items">About</span></a>
         </li>
-        <li class="transition-transform hover:scale-105"><a href="/letterpress" class="page-nav-items">Letterpress</a></li>
-        <li class="transition-transform hover:scale-105"><a href="/typepieces" class="page-nav-items">Typepieces</a></li>
-        <li class="transition-transform hover:scale-105"><a href="/documentation" class="page-nav-items">Documentation</a></li>
-        <li class="transition-transform hover:scale-105"><a href="/shop" class="page-nav-items">Shop</a></li>
+        <li class="transition-transform hover:scale-105"><a href="/letterpress"><span class="page-nav-items">Letterpress</span></a></li>
+        <li class="transition-transform hover:scale-105"><a href="/typepieces"><span class="page-nav-items">Typepieces</span></a></li>
+        <li class="transition-transform hover:scale-105"><a href="/documentation"><span class="page-nav-items">Documentation</span></a></li>
+        <li class="transition-transform hover:scale-105"><a href="/shop"><span class="page-nav-items">Shop</span></a></li>
       </ul>
 
       <CartIcon bind:menuOpen={isOpen}/>
@@ -146,8 +146,18 @@
     gap: 1rem;
   }
 
-  #page-nav a:focus-visible {
-    outline: 3px solid var(--color-paper-content);
+  a {
+    display: block;
+    margin: 0;
+    width: 100%;
+  }
+
+  .page-nav-items{
+    width: 100%;
+  }
+
+  .page-nav-items:focus-within {
+    outline: 1px solid var(--color-paper-content);
     outline-offset: 2px;
   }
 
@@ -160,6 +170,7 @@
 
   li {
     list-style: none;
+    width: 100%;
   }
 
   #op-btn-page-nav {

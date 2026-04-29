@@ -13,7 +13,39 @@ import PageHead from "../components/PageHead.astro";
 <BaseLayout title={title}>
     <PageHead h1={title}/>
     <DigitalBackground>
-        <div class="digi_grid ">
+        <div id="about_digi" class="grid grid-cols-3 gap-8 justify-items-center">
+            <span><p class="about_digi_text ">Design</p></span>
+            <Image
+                src="/about_2.png"
+                alt="Initial Design for typepieces"
+                class="img_left "
+                width="600"
+                height="600"
+            />
+            <span><p class="about_digi_text ">Test</p></span>
+            <Image
+                src="/about_1.png"
+                alt="Test Prints, showing the joy of miss spelling when printing: TMIE(time) For Design"
+                class="img_right "
+                width="600"
+                height="600"
+            />
+            <span><p class="about_digi_text ">Play</p></span>
+            <Image
+                src="/about_4.webp"
+                alt="Design play, test styles for documentation branding"
+                class="img_left "
+                width="600"
+                height="600"
+            />
+            <span><p class="about_digi_text ">Documentation</p></span>
+            <Image
+                src="/about_3.webp"
+                alt="Design play, test styles for documentation branding"
+                class="img_right "
+                width="600"
+                height="600"
+            />
 
         </div>
     </DigitalBackground>
@@ -60,5 +92,48 @@ import PageHead from "../components/PageHead.astro";
 </BaseLayout>
 
 <style>
+    #about_digi {
+        padding: 0 .5rem
+    }
 
+    #about_digi img {
+        grid-column: 1 / 4;
+        object-fit: cover;
+        max-height: 600px;
+        margin: 0 0 4rem;
+    }
+
+    span:has(.about_digi_text) {
+        grid-column: 1 / 4;
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid var(--color-digital-content);
+    }
+
+    .about_digi_text {
+        margin: 0;
+        padding-left: 2rem;
+        color: var(--color-digital-content);
+        font-family: 'Montserrat Variable';
+        font-weight: 700;
+        font-size: clamp(2rem, 5vw, 10rem);
+    }
+
+    p {
+        margin-bottom: .25rem;
+    }
+
+    @media (min-width: 700px ){
+        #about_digi {
+            padding: 0 10rem;
+        }
+
+        #about_digi .img_right {
+            grid-column: 2 / 4;
+        }
+
+        #about_digi .img_left {
+            grid-column: 1 / 3;
+        }
+    }
 </style>
