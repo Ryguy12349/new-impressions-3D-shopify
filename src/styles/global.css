@@ -69,6 +69,13 @@ li a{font-family: 'Montserrat Variable'; font-size: 1.5rem; font-weight: 500;}
   a{font-family: 'Montserrat Variable'; font-size: 1.5rem; font-weight: 500;}
 }
 
+.paper_section img {
+    max-width: 100%;
+    max-height:400px;
+    object-fit: cover;
+    object-position: 50% 45%;
+}
+
 .paper_pattern {
   background-color: var(--color-paper-bg);
   background-image: url('/paper_dot_pattern.png');
@@ -122,5 +129,10 @@ li a{font-family: 'Montserrat Variable'; font-size: 1.5rem; font-weight: 500;}
         max-width: 66.67%;
         gap: 3rem;
         max-height: 500px;
+    }
+    .paper_section img {
+        max-width: 50%;
+        object-fit: cover;
+        object-position: 50% 45%;
     }
 }

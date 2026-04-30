@@ -11,74 +11,84 @@ import LetterpressFloat from "../components/letterpressFloat.svelte";
 
 <BaseLayout title={title}>
     <PageHead h1={title}/>
-    <DigitalBackground>
     
+    <DigitalBackground>
         <LetterpressFloat client:only="svelte"/>
-
     </DigitalBackground>
 
     <section id="action" class="paper_section">
-        <!-- <Image
-            src=""
-            alt=""
-            width=""
-        /> -->
+        <Image src="/typepieces_1.JPG" alt="" width={1200} height={800} />
         <div class="text_container">
-            <div>
-                <h2>Press in Action</h2>
-                <p>The press has been run through many tests, both checking its ability to work and to durability under stress. 
-                    Working well with simple prints, the press was designed to be within the standards of other small sheet letterpresses. 
-                    This means you can use all typepieces on the press and even some chases fill nicely within our press.
-                </p>
-            </div>
+            <h2>Press in Action</h2>
+            <p>The press has been run through many tests... standard of other small sheet letterpresses.</p>
         </div>
     </section>
+
     <section id="build" class="paper_section">
-        <!-- <Image
-            src=""
-            alt=""
-            width=""
-        /> -->
+        <section id="build" class="paper_section">
+            <video 
+                src="/typepieces_2.mov" 
+                controls 
+                preload="metadata"
+                class="shadow-sm border border-[var(--color-paper-content)]/10"
+            >
+            <p>Your browser does not support the video tag. <a href="/typepieces_2.mov">Download the video instead.</a></p>
+        </video>
+        
         <div class="text_container">
             <div>
                 <h2>Build it Yourself</h2>
                 <p>Being fully 3D printed, you can print and build it yourself for a little under $30, 
-                    which is a 70% decrease from the lowest you would normally find online. We are offering the files to you for free, 
-                    only with the hope that you will send us some photos and share the joy of this age-old craft with others.
+                    which is a 70% decrease from the lowest you would normally find online.
                 </p>
             </div>
             <LinkBtn url="/buildit">Find the Files and Build Guide Here</LinkBtn>
         </div>
     </section>
-    <section id="shop" class="paper_section">
-        <!-- <Image
-            src=""
-            alt=""
-            width=""
-        /> -->
         <div class="text_container">
-            <div>
-                <h2>Buy it Pre-Built</h2>
-                <p>Don’t have a 3D printer by want to learn, experiment, and play with a letterpress. 
-                    Buy our pre-printed letterpress press from us for a little over the cost of printing,  
-                    buying material, and shipping. If you're not a huge fan of what we have, but like the concept. 
-                    We offer custom requests, a made press or typeface to your liking.
-                </p>
-            </div>
-            <LinkBtn url="/shop">Visit our Shop or Make a Request Here </LinkBtn>
-        </div>
-    </section>
-    <section id="inspo" class="paper_section">
-        <div class="text_container">
-            <div>
-                <h2>Learn More</h2>
-                <p>
-                    Wanna learn about other projects like our own? 
-                    We have a list and explanation of each of our inspirations and friends in the community. 
-                </p>
-            </div>
-            <LinkBtn url="/inspiration">Find our Inspiration Here</LinkBtn>
+            <h2>Build it Yourself</h2>
+            <p>Being fully 3D printed, you can print and build it yourself for a little under $30...</p>
+            <LinkBtn url="/buildit">Find the Files and Build Guide Here</LinkBtn>
         </div>
     </section>
 
+    <section id="shop" class="paper_section">
+        <Image src="/typepieces_3.webp" alt="" width={1200} height={800} />
+        <div class="text_container">
+            <h2>Buy it Pre-Built</h2>
+            <p>Don’t have a 3D printer but want to learn... visit our shop to purchase.</p>
+            <LinkBtn url="/shop">Visit our Shop or Make a Request Here </LinkBtn>
+        </div>
+    </section>
+
+    <section id="inspo" class="paper_section !max-w-full justify-center text-center">
+        <div class="text_container !items-center max-w-2xl">
+            <h2>Learn More</h2>
+            <p>Wanna learn about other projects like our own? We have a list of inspirations.</p>
+            <LinkBtn url="/inspiration">Find our Inspiration Here</LinkBtn>
+        </div>
+    </section>
 </BaseLayout>
+
+<style>
+    #action, #build, #shop, #inspo {
+        flex-direction: column;
+    }
+
+    @media (min-width: 700px) {
+        #action, #build, #shop {
+            flex-direction: row;
+        }
+
+        #build {
+            flex-direction: row-reverse;
+        }
+
+        video {
+            max-width: 50%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+        }
+    }
+</style>
