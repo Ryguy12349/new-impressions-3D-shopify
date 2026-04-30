@@ -6,15 +6,14 @@ const title = "Letterpress";
 import PageHead from "../components/PageHead.astro";
 import LinkBtn from "../components/linkbtn.astro";
 import { Image } from "astro:assets";
+import LetterpressFloat from "../components/letterpressFloat.svelte";
 ---
 
 <BaseLayout title={title}>
     <PageHead h1={title}/>
     <DigitalBackground>
     
-        <div id="p5Canvas">
-
-        </div>
+        <LetterpressFloat client:only="svelte"/>
 
     </DigitalBackground>
 
