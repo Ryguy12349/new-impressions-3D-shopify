@@ -3,7 +3,7 @@
 
   let container;
   let p5Instance;
-  let rotation = { x: 0, y: 0 };
+  let rotation = { x: -0.300, y: 2.850 };
   
   // Object to hold our 6 separate models
   let parts = {
