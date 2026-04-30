@@ -71,7 +71,7 @@
         p.rotateY(rotation.y);
 
         //GLOBAL SCALE & ORIENTATION
-        p.scale(0.6); 
+        p.scale(0.5); 
         p.rotateZ(p.PI); // Your upside-down fix
 
         // PIVOT POINT 

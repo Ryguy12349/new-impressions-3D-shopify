@@ -16,8 +16,8 @@ export const ImageResult = z
   .object({
     altText: z.string().nullable().optional(),
     url: z.string(),
-    width: z.number().positive().int(),
-    height: z.number().positive().int(),
+    width: z.number().positive().int().nullable().optional(), // Made more flexible
+    height: z.number().positive().int().nullable().optional(),
   })
   .nullable();
 
@@ -58,8 +58,15 @@ export const VariantResult = z.object({
   id: z.string(),
   title: z.string(),
   availableForSale: z.boolean(),
-  quantityAvailable: z.number().int().optional(),
+  quantityAvailable: z.number().int().nullable().optional(),
   price: MoneyV2Result,
+  // ADDED: This allows the variant to know which color/size it is
+  selectedOptions: z.array(
+    z.object({
+      name: z.string(),
+      value: z.string(),
+    })
+  ).optional(),
 });
 
 export const ProductResult = z
@@ -67,6 +74,13 @@ export const ProductResult = z
     id: z.string(),
     title: z.string(),
     handle: z.string(),
+    // ADDED: This provides the list of all available options for buttons
+    options: z.array(
+      z.object({
+        name: z.string(),
+        values: z.array(z.string()),
+      })
+    ).optional(),
     images: z.object({
       nodes: z.array(ImageResult),
     }),

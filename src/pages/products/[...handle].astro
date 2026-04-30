@@ -5,12 +5,14 @@ import { setCache } from "../../utils/cache";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NotFoundLayout from "../../layouts/NotFoundLayout.astro";
 import AddToCartForm from "../../components/cart/AddToCartForm.svelte";
-import ProductImageGallery from "../../components/product/ProductImageGallery.astro";
+import ProductImageGallery from "../../components/product/ProductImageGallery.svelte";
 import ProductBreadcrumb from "../../components/product/ProductBreadcrumb.astro";
 import ProductInformations from "../../components/product/ProductInformations.astro";
 import ProductRecommendations from "../../components/product/ProductRecommendations.astro";
 import ProductReviews from "../../components/product/ProductReviews.astro";
 import ProductAccordions from "../../components/product/ProductAccordions.astro";
+import ProductPurchaseActions from "../../components/product/ProductPurchaseActions.svelte";
+
 
 const { handle } = Astro.params;
 const headers = Astro.request.headers;
@@ -32,6 +34,36 @@ setCache.short(Astro);
 
 {
   !product ? (
+    <NotFoundLayout title="Product not found" />
+  ) : (
+    <BaseLayout title={product.title}>
+      <section class="container">
+        <div class="pb-16 pt-6 lg:grid lg:grid-cols-12 lg:gap-20">
+          <div class="lg:col-span-7">
+            <ProductImageGallery images={product.images} client:load/>
+          </div>
+
+          <div class="mt-8 lg:col-span-5 lg:mt-0">
+            <ProductPurchaseActions 
+              product={product} 
+              client:load 
+            />
+
+            <ProductInformations />
+
+            <div class="mt-8">
+              <ProductAccordions />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      </BaseLayout>
+  )
+}
+
+<!-- {
+  !product ? (
     <NotFoundLayout title="Product not found" message="Product not found" />
   ) : (
     <BaseLayout title={product.title}>
@@ -42,7 +74,7 @@ setCache.short(Astro);
       <section class="container">
         <div class="pb-16 pt-6 lg:grid lg:grid-cols-12 lg:gap-20">
           <div class="lg:col-span-7">
-            <ProductImageGallery images={product.images} />
+            <ProductImageGallery images={product.images} client:load/>
           </div>
 
           <div class="mt-8 lg:col-span-5 lg:mt-0">
@@ -76,4 +108,4 @@ setCache.short(Astro);
       </section>
     </BaseLayout>
   )
-}
+} -->

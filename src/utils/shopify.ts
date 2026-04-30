@@ -11,7 +11,9 @@ import {
   ProductRecommendationsQuery,
 } from "./graphql";
 
-// Make a request to Shopify's GraphQL API  and return the data object from the response body as JSON data.
+/**
+ * Core requester for the Shopify Storefront API.
+ */
 const makeShopifyRequest = async (
   query: string,
   variables: Record<string, unknown> = {},
@@ -20,96 +22,83 @@ const makeShopifyRequest = async (
   const isSSR = import.meta.env.SSR;
   const apiUrl = `https://${config.shopifyShop}/api/${config.apiVersion}/graphql.json`;
 
-  function getOptions() {
-    // If the request is made from the server, we need to pass the private access token and the buyer IP
-    isSSR &&
-      !buyerIP &&
-      console.error(
-        `🔴 No buyer IP provided => make sure to pass the buyer IP when making a server side Shopify request.`
-      );
-
-    const { privateShopifyAccessToken, publicShopifyAccessToken } = config;
-    const options = {
-      method: "POST",
-      headers: {},
-      body: JSON.stringify({ query, variables }),
-    };
-    // Check if the Shopify request is made from the server or the client
-    if (isSSR) {
-      options.headers = {
-        "Content-Type": "application/json",
-        "Shopify-Storefront-Private-Token": privateShopifyAccessToken,
-        "Shopify-Storefront-Buyer-IP": buyerIP,
-      };
-      return options;
-    }
-    options.headers = {
-      "Content-Type": "application/json",
-      "X-Shopify-Storefront-Access-Token": publicShopifyAccessToken,
-    };
-
-    return options;
+  // Server-side check for Buyer IP (required by Shopify for SSR rate limiting)
+  if (isSSR && !buyerIP) {
+    console.warn(
+      `⚠️ No buyer IP provided. Shopify requests from the server should include the client's IP to avoid rate-limiting issues.`
+    );
   }
 
-  const response = await fetch(apiUrl, getOptions());
+  const { privateShopifyAccessToken, publicShopifyAccessToken } = config;
+  
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+
+  // Auth strategy based on environment
+  if (isSSR) {
+    headers["Shopify-Storefront-Private-Token"] = privateShopifyAccessToken;
+    if (buyerIP) headers["Shopify-Storefront-Buyer-IP"] = buyerIP;
+  } else {
+    headers["X-Shopify-Storefront-Access-Token"] = publicShopifyAccessToken;
+  }
+
+  const response = await fetch(apiUrl, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ query, variables }),
+  });
 
   if (!response.ok) {
     const body = await response.text();
-    throw new Error(`${response.status} ${body}`);
+    throw new Error(`Shopify API Error: ${response.status} ${body}`);
   }
 
   const json = await response.json();
   if (json.errors) {
-    throw new Error(json.errors.map((e: Error) => e.message).join("\n"));
+    throw new Error(
+      `Shopify GraphQL Errors: ${json.errors.map((e: any) => e.message).join("\n")}`
+    );
   }
 
   return json.data;
 };
 
-// Get all products or a limited number of products (default: 10)
+/**
+ * Fetches a list of products.
+ */
 export const getProducts = async (options: {
   limit?: number;
   buyerIP: string;
 }) => {
   const { limit = 10, buyerIP } = options;
+  const data = await makeShopifyRequest(ProductsQuery, { first: limit }, buyerIP);
 
-  const data = await makeShopifyRequest(
-    ProductsQuery,
-    { first: limit },
-    buyerIP
-  );
-  const { products } = data;
+  if (!data?.products) throw new Error("No products found");
 
-  if (!products) {
-    throw new Error("No products found");
-  }
-
-  const productsList = products.edges.map((edge: any) => edge.node);
-  const ProductsResult = z.array(ProductResult);
-  const parsedProducts = ProductsResult.parse(productsList);
-
-  return parsedProducts;
+  const productsList = data.products.edges.map((edge: any) => edge.node);
+  return z.array(ProductResult).parse(productsList);
 };
 
-// Get a product by its handle (slug)
+/**
+ * Fetches a single product by handle.
+ */
 export const getProductByHandle = async (options: {
   handle: string;
   buyerIP: string;
 }) => {
   const { handle, buyerIP } = options;
+  const data = await makeShopifyRequest(ProductByHandleQuery, { handle }, buyerIP);
 
-  const data = await makeShopifyRequest(
-    ProductByHandleQuery,
-    { handle },
-    buyerIP
-  );
-  const { product } = data;
+  if (!data?.product) return null;
 
-  const parsedProduct = ProductResult.parse(product);
-
-  return parsedProduct;
+  // This will throw an error if the data doesn't match the Zod schema in schemas.ts
+  return ProductResult.parse(data.product);
 };
 
+/**
+ * Fetches recommended products for a given product ID.
+ */
 export const getProductRecommendations = async (options: {
   productId: string;
   buyerIP: string;
@@ -117,67 +106,46 @@ export const getProductRecommendations = async (options: {
   const { productId, buyerIP } = options;
   const data = await makeShopifyRequest(
     ProductRecommendationsQuery,
-    {
-      productId,
-    },
+    { productId },
     buyerIP
   );
-  const { productRecommendations } = data;
 
-  const ProductsResult = z.array(ProductResult);
-  const parsedProducts = ProductsResult.parse(productRecommendations);
+  if (!data?.productRecommendations) return [];
 
-  return parsedProducts;
+  return z.array(ProductResult).parse(data.productRecommendations);
 };
 
-// Create a cart and add a line item to it and return the cart object
+/**
+ * Cart Operations
+ */
+
 export const createCart = async (id: string, quantity: number) => {
   const data = await makeShopifyRequest(CreateCartMutation, { id, quantity });
-  const { cartCreate } = data;
-  const { cart } = cartCreate;
-  const parsedCart = CartResult.parse(cart);
-
-  return parsedCart;
+  return CartResult.parse(data.cartCreate?.cart);
 };
 
-// Add a line item to an existing cart (by ID) and return the updated cart object
 export const addCartLines = async (
-  id: string,
+  cartId: string,
   merchandiseId: string,
   quantity: number
 ) => {
   const data = await makeShopifyRequest(AddCartLinesMutation, {
-    cartId: id,
+    cartId,
     merchandiseId,
     quantity,
   });
-  const { cartLinesAdd } = data;
-  const { cart } = cartLinesAdd;
-
-  const parsedCart = CartResult.parse(cart);
-
-  return parsedCart;
+  return CartResult.parse(data.cartLinesAdd?.cart);
 };
 
-// Remove line items from an existing cart (by IDs) and return the updated cart object
-export const removeCartLines = async (id: string, lineIds: string[]) => {
+export const removeCartLines = async (cartId: string, lineIds: string[]) => {
   const data = await makeShopifyRequest(RemoveCartLinesMutation, {
-    cartId: id,
+    cartId,
     lineIds,
   });
-  const { cartLinesRemove } = data;
-  const { cart } = cartLinesRemove;
-  const parsedCart = CartResult.parse(cart);
-
-  return parsedCart;
+  return CartResult.parse(data.cartLinesRemove?.cart);
 };
 
-// Get a cart by its ID and return the cart object
 export const getCart = async (id: string) => {
   const data = await makeShopifyRequest(GetCartQuery, { id });
-
-  const { cart } = data;
-  const parsedCart = CartResult.parse(cart);
-
-  return parsedCart;
+  return data?.cart ? CartResult.parse(data.cart) : null;
 };

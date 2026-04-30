@@ -14,11 +14,12 @@ import { Image } from "astro:assets";
 <BaseLayout title={title}>
     <PageHead h1={title}/>
     <DigitalBackground>
-    
-        <iframe width="300" height="400" src="https://docs.google.com/document/d/e/2PACX-1vSBW-XKQmvC0N_YXJayXSzY9tdKdDJl1VQuqizFO21sd2MO6JbePKGmF2EP0yYDINXeIjhVVpM8c2j4/pub?embedded=true">
-        </iframe>
-
-        <div>
+        
+        <div id="doc_wrapper">
+            <iframe width="300" height="400" src="https://docs.google.com/document/d/e/2PACX-1vSBW-XKQmvC0N_YXJayXSzY9tdKdDJl1VQuqizFO21sd2MO6JbePKGmF2EP0yYDINXeIjhVVpM8c2j4/pub?embedded=true">
+            </iframe>
+        </div>
+        <div id="project_version">
             <p>Project Version:</p>
             <p>2.00.4</p>
         </div>
@@ -36,3 +37,45 @@ import { Image } from "astro:assets";
 
 </BaseLayout>
 
+<style>
+
+    #doc_wrapper {
+
+        position: relative;
+        width: 100%; /* Your desired visible size */
+        height: 380px;
+        overflow: hidden;
+    }
+
+    iframe {
+        width: 333%;
+        height: 1140px; 
+        transform: scale(0.333);
+        transform-origin: 0 0;
+    }
+
+    #project_version{
+        margin-top: 3rem;
+        display: flex;
+        width: 100%;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #project_version p:nth-child(1) {
+        font-family: 'Montserrat Variable';
+        font-size: 1.5rem;
+        font-weight: 500;
+        padding: 0 0 .1rem;
+        color: var(--color-digital-content);
+    }
+
+    #project_version p:nth-child(2) {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--color-digital-content);
+    }
+</style>

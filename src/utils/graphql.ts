@@ -53,6 +53,11 @@ fragment productFragment on Product {
   id
   title
   handle
+  description
+  options {
+    name
+    values
+  }
   images (first: 10) {
     nodes {
       url
@@ -61,14 +66,19 @@ fragment productFragment on Product {
       altText
     }
   }
-  variants(first: 10) {
+  variants(first: 250) {
     nodes {
       id
       title
       availableForSale
+      quantityAvailable
       price {
         amount
         currencyCode
+      }
+      selectedOptions {
+        name
+        value
       }
     }
   }
