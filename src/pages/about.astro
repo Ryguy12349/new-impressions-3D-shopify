@@ -1,72 +1,68 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import DigitalBackground from "../components/DigitalBackground.astro";
-
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets"; // Cleaned up import to match your other pages
 import LinkBtn from "../components/linkbtn.astro";
-
-const title = "About";
 import PageHead from "../components/PageHead.astro";
 
+const title = "About";
 ---
 
 <BaseLayout title={title}>
     <PageHead h1={title}/>
+    
     <DigitalBackground>
         <div id="about_digi" class="grid grid-cols-3 gap-8 justify-items-center">
-            <!-- <span><p class="about_digi_text ">Design</p></span> -->
             <Image
                 src="/about_2.png"
                 alt="Initial Design for typepieces"
-                class="img_left "
-                width="600"
-                height="600"
+                class="img_left"
+                width={600}
+                height={600}
             />
-            <!-- <span><p class="about_digi_text ">Test</p></span> -->
             <Image
                 src="/about_1.png"
-                alt="Test Prints, showing the joy of miss spelling when printing: TMIE(time) For Design"
-                class="img_right "
-                width="600"
-                height="600"
+                alt="Test Prints: TMIE For Design"
+                class="img_right"
+                width={600}
+                height={600}
             />
-            <!-- <span><p class="about_digi_text ">Play</p></span> -->
             <Image
                 src="/about_4.webp"
                 alt="Design play, test styles for documentation branding"
-                class="img_left "
-                width="600"
-                height="600"
+                class="img_left"
+                width={600}
+                height={600}
             />
-            <!-- <span><p class="about_digi_text ">Document</p></span> -->
             <Image
                 src="/about_3.webp"
                 alt="Design play, test styles for documentation branding"
-                class="img_right "
-                width="600"
-                height="600"
+                class="img_right"
+                width={600}
+                height={600}
             />
-
         </div>
     </DigitalBackground>
+
     <section id="started" class="paper_section">
         <div class="text_container">
             <div>
                 <h2>Where it started</h2>
                 <p>
                     This project started with the question, “What are you going to do for your thesis?” 
-                    My answer, of course, my answer was “I don’t know, probably something with my collection of quotes in my notes app.” 
+                    My answer, of course, was “I don’t know, probably something with my collection of quotes in my notes app.” 
                     Kick off to a week later, and the realization that I spent my whole savings on a 3D printer, 
                     it became clear to me that I need to use my printer to connect my major thesis with my DDF minor.
                 </p>
                 <p>
-                    The connection between major and minor skills led me down the path to a documentary project now known a New Impressions. 
-                    Documenting my growth in connecting and combining skills through the goal my building an almost fully 3D printed letterpress. 
+                    The connection between major and minor skills led me down the path to a documentary project now known as New Impressions. 
+                    Documenting my growth in connecting and combining skills through the goal of building an almost fully 3D printed letterpress. 
                     This letterpress would work both with old letterpress equipment and would have a full set of its own tools.
                 </p>
             </div>
         </div>
     </section>
+
     <section id="intents" class="paper_section">
         <div class="text_container">
             <div>
@@ -77,29 +73,50 @@ import PageHead from "../components/PageHead.astro";
                     All of this needed to be 3D printable and devoid of lead.
                 </p>
             </div>
-            <div class="two_links">
-                <LinkBtn url="https://2026show.newpaltz.design/projects/new-impressions/">View my<br/> project page</LinkBtn>
-                <LinkBtn url="https://2026show.newpaltz.design/">View our<br/> class page</LinkBtn>
+        </div>
+    </section>  
+
+     <section id="show_info" class="paper_section">
+        <div class="text_container">
+            <div>
+                <h2>Thesis & The Design Show</h2>
+                <p>
+                    New Impressions is a thesis project developed for the MA in Digital Design & Fabrication and the BFA Graphic Design programs within the Department of Design at SUNY New Paltz. This work was featured in The Design Show 2026, which showcases the graduating class from both the Graphic Design and the DDF sections.
+                </p>
+                
+                <div class="two_links mt-8">
+                    <LinkBtn url="https://2026show.newpaltz.design/projects/new-impressions/" target="_blank">View my project page</LinkBtn>
+                    <LinkBtn url="https://2026show.newpaltz.design/" target="_blank">View our class page</LinkBtn>
+                </div>
             </div>
         </div>
-    </section> 
+    </section>
+
     <section id="achievements" class="paper_section"> 
         <div class="text_container">
             <h2>Achievements</h2>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+            <ul class="list-disc pl-5 space-y-4">
+                <li>
+                    <strong>Multidisciplinary Integration:</strong> Combined traditional letterpress principles with modern fabrication to bridge the gap between Graphic Design and Digital Design & Fabrication.
+                </li>
+                <li>
+                    <strong>Digital Platform:</strong> Built a custom multi-page hub to host project documentation, community resources, and the storefront for the press and typepieces.
+                </li>
+                <li>
+                    <strong>Engineering Fixes:</strong> Resolved critical structural issues and optimized mechanical tolerances through multiple generations of prototypes to ensure long-term durability.
+                </li>
+                <li>
+                    <strong>Educational Outreach:</strong> Developed an open-source template system and build guides to lower the cost and barrier to entry for the letterpress community.
+                </li>
+            </ul>
         </div>
-    </section>  
+    </section>
+
 </BaseLayout>
 
 <style>
     #about_digi {
-        padding: 0 .5rem
+        padding: 4rem .5rem; /* Added some vertical padding to clear the header */
     }
 
     #about_digi img {
@@ -107,31 +124,20 @@ import PageHead from "../components/PageHead.astro";
         object-fit: cover;
         max-height: 600px;
         margin: 0 0 4rem;
+        border-radius: 0; /* Ensuring no rounding in digital background per your request */
     }
 
-    span:has(.about_digi_text) {
-        grid-column: 1 / 4;
-        width: 100%;
-        text-align: left;
-        border-bottom: 1px solid var(--color-digital-content);
-    }
-
-    .about_digi_text {
-        margin: 0;
-        padding-left: 2rem;
-        color: var(--color-digital-content);
-        font-family: 'Montserrat Variable';
-        font-weight: 700;
-        font-size: clamp(2rem, 5vw, 10rem);
-    }
-
-    p {
-        margin-bottom: .25rem;
+    /* Target the achievements list specifically to keep it Mallanna */
+    #achievements ul li {
+        font-family: 'Mallanna';
+        font-size: 1.25rem;
+        line-height: 1.2;
+        color: var(--color-paper-content);
     }
 
     @media (min-width: 700px ){
         #about_digi {
-            padding: 0 10rem;
+            padding: 6rem 10rem;
         }
 
         #about_digi .img_right {
@@ -140,6 +146,10 @@ import PageHead from "../components/PageHead.astro";
 
         #about_digi .img_left {
             grid-column: 1 / 3;
+        }
+
+        #achievements ul li {
+            font-size: 1.5rem;
         }
     }
 </style>

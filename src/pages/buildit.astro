@@ -1,30 +1,67 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import DigitalBackground from "../components/DigitalBackground.astro";
-
-const title = "Build It";
 import PageHead from "../components/PageHead.astro";
 
+const title = "Build It";
 ---
 
 <BaseLayout title={title}>
 <PageHead h1={title}/>
-<DigitalBackground>
-    <p>Future vid 1</p>
-    <h2>Video 1 Transcripts</h2>
 
-    <p>Future vid 2</p>
-    <h2>Video 2 Transcripts</h2>
+<DigitalBackground>
+    <div class="p-8 space-y-12">
+        <div class="aspect-video bg-[var(--color-digital-bg)] flex items-center justify-center">
+            <p class="text-[var(--color-digital-content)] opacity-50 italic">Future Video 1: The Press</p>
+        </div>
+        <div class="text_container !items-start text-[var(--color-digital-content)]">
+            <h2>Video 1 Transcripts</h2>
+            <p class="opacity-70">Transcripts pending upload...</p>
+        </div>
+
+        <div class="aspect-video bg-[var(--color-digital-bg)] flex items-center justify-center">
+            <p class="text-[var(--color-digital-content)] opacity-50 italic">Future Video 2: Type Pieces</p>
+        </div>
+        <div class="text_container !items-start text-[var(--color-digital-content)]">
+            <h2>Video 2 Transcripts</h2>
+            <p class="opacity-70">Transcripts pending upload...</p>
+        </div>
+    </div>
 </DigitalBackground>
     
 <section id="build" class="paper_section">
     <div class="text_container">
         <h2>Build Concerns</h2>
+        <div>
+            <h3>Legal & Intellectual Property</h3>
+            <p>
+                When building your own typepieces, copyright is the primary hurdle. Many typefaces have strict licensing regarding 3D reproduction. While this project provides monospaced templates to help you recover missing fonts or create new sets, you must ensure you have the right to digitize and print the specific letterforms you choose.
+            </p>
+        </div>
+        <div>
+            <h3>Mechanical Integrity</h3>
+            <p>
+                A 3D printed press is a study in stress management. The tension required for a clean "impression" can lead to backplate deformation or structural failure if tolerances aren't respected. It is vital to monitor the structural pegs and linkages for wear, as plastic components will inevitably fatigue faster than traditional cast-iron equipment.
+            </p>
+        </div>
     </div>
 </section>
+
 <section id="issues" class="paper_section">
     <div class="text_container">
-        <h2>Issues and Troubleshooting</h2>
+        <h2>Material Worries</h2>
+        <div>
+            <h3>Filament Fatigue & Shrinkage</h3>
+            <p>
+                Not all plastics are equal under pressure. Material shrinkage during the cooling process can throw off your tolerances, requiring precise calibration of your printer to ensure pegs fit securely. Furthermore, heat and friction from repeated use can cause PLA to soften or warp over time.
+            </p>
+        </div>
+        <div>
+            <h3>The Ink Connection</h3>
+            <p>
+                The interaction between 3D printing filaments and oil-based or rubber-based inks is a major variable. Some materials may degrade when exposed to certain solvents, while others may not hold ink consistently. We recommend using a TPU or rubber-based plate to provide the necessary "squish" for a proper transfer without snapping your rigid printed parts.
+            </p>
+        </div>
     </div>
 </section>
 

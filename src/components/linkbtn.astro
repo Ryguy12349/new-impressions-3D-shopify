@@ -1,23 +1,23 @@
 ---
-const { url } = Astro.props;
-
+const { url, target = "_self" } = Astro.props;
 --- 
 
-<a href={url}>
+<a href={url} target={target}>
     <slot/>
 </a>
 
 <style>
-
     a {
         padding: .5rem;
         border: 1px solid var(--color-digital-bg);
         border-radius: .25rem; 
+        display: inline-flex; /* Changed to flex to help align the SVG icon later */
+        align-items: center;
+        transition: all 0.2s ease;
     }
 
     a:hover {
         background-color: var(--color-digital-bg);
         color: var(--color-digital-content);
     }
-    
 </style>

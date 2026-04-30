@@ -55,8 +55,8 @@
           style="color: var(--color-paper-content);"
         >
             <div class="flex items-center justify-between p-6 border-b border-[var(--color-paper-content)]/10">
-              <h2 class="flex gap-4 items-center text-2xl font-bold uppercase tracking-tighter" id="slide-over-title">
-                Your bag
+              <h2 class="flex gap-4 items-center text-2xl font-bold tracking-tighter" id="slide-over-title">
+                Your Bag
                 {#if $isCartUpdating}
                   <svg class="animate-spin h-5 w-5 text-[var(--color-accent-1)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
