@@ -25,6 +25,7 @@ import { Image } from "astro:assets";
         </div>
 
         <Image
+            id="docImg"
             src="/documentation_1.png"
             alt=""
             width="1920"
@@ -77,5 +78,25 @@ import { Image } from "astro:assets";
         font-size: 1.5rem;
         font-weight: bold;
         color: var(--color-digital-content);
+    }
+
+    @media (min-width: 700px) {
+        #doc_wrapper {
+            width: 50%;
+            height: 650px;
+            overflow-x: hidden;
+            margin:0 auto;
+        }
+
+        iframe {
+            width: 110%;
+            height: 650px; 
+            transform: scale(1);
+        }
+
+        #docImg {
+            width: 75%;
+            margin: 0 auto;
+        }
     }
 </style>

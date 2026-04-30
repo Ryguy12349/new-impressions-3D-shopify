@@ -28,16 +28,14 @@ import LetterpressFloat from "../components/letterpressFloat.svelte";
     </section>
 
     <section id="build" class="paper_section">
-        <section id="build" class="paper_section">
-            <video 
-                src="/typepieces_2.mov" 
-                controls 
-                preload="metadata"
-                class="shadow-sm border border-[var(--color-paper-content)]/10"
-            >
-            <p>Your browser does not support the video tag. <a href="/typepieces_2.mov">Download the video instead.</a></p>
+        <video 
+            src="/typepieces_2.mov" 
+            controls 
+            preload="metadata"
+            class="shadow-sm border border-[var(--color-paper-content)]/10"
+        >
+        <p>Your browser does not support the video tag. <a href="/typepieces_2.mov">Download the video instead.</a></p>
         </video>
-        
         <div class="text_container">
             <div>
                 <h2>Build it Yourself</h2>
@@ -65,7 +63,7 @@ import LetterpressFloat from "../components/letterpressFloat.svelte";
         </div>
     </section>
 
-    <section id="inspo" class="paper_section !max-w-full justify-center text-center">
+    <section id="inspo" class="paper_section justify-center text-center">
         <div class="text_container !items-center max-w-2xl">
             <h2>Learn More</h2>
             <p>
@@ -88,6 +86,10 @@ import LetterpressFloat from "../components/letterpressFloat.svelte";
 
         #build {
             flex-direction: row-reverse;
+        }
+        
+        #inspo {
+            margin: 0 auto;
         }
 
         video {
