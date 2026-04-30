@@ -1,41 +1,24 @@
 ---
 import DigitalBackground from "../components/DigitalBackground.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const title = "Type Pieces";
 import PageHead from "../components/PageHead.astro";
 import LinkBtn from "../components/linkbtn.astro";
 import { Image } from "astro:assets";
+
+const title = "Type Pieces";
 ---
 
 <BaseLayout title={title}>
-<PageHead h1={title}/>
-<DigitalBackground>
-
-    <section id="imgGal" class="digital_section">
-        <!-- <Image
-            src=""
-            alt=""
-            width=""
-            height=""
-        />
-        <Image
-            src=""
-            alt=""
-            width=""
-            height=""
-        />
-        <Image
-            src=""
-            alt=""
-            width=""
-            height=""
-        /> -->
+  <PageHead h1={title}/>
+  
+  <DigitalBackground>
+    <section id="imgGal" class="digital_section min-h-[400px] flex items-center justify-center">
+        <p class="text-[var(--color-paper-content)] opacity-50 italic">Digital Gallery Pending</p>
     </section>
+  </DigitalBackground>
 
-</DigitalBackground>
-
-<section id="action" class="paper_section">
+  <section id="action" class="paper_section">
+    <Image src="/typepieces_1.JPG" alt="Type in Action" width={1200} height={800} />
     <div class="text_container">
         <div>
             <h2>Type in Action</h2>
@@ -47,12 +30,14 @@ import { Image } from "astro:assets";
             </p>
         </div>
     </div>
-</section>    
-<section id="concerns" class="paper_section">
+  </section>
+
+  <section id="concerns" class="paper_section">
     <div class="text_container">
         <div>
             <h2>Concerns</h2>
-            <p>How should you go about making typepieces, what in there to worry about, and why should you do this in the first place? 
+            <p>
+                How should you go about making typepieces, what in there to worry about, and why should you do this in the first place? 
                 Making 3D printed typepieces has many copyright concerns, and whether they will work in the first place. 
                 These concerns are valid and, in some cases, will save you from many issues, but 3D typepieces have many uses. 
                 You can recover old fonts that are missing too many to be used, you can remove lead from the process, or you can make a whole new set of letterpress fonts. 
@@ -60,12 +45,20 @@ import { Image } from "astro:assets";
             </p>
         </div>
     </div>
-</section>
-<section id="build" class="paper_section">
+  </section>
+
+  <section id="build" class="paper_section">
+    <video 
+        src="/typepieces_2.mov" 
+        controls 
+        preload="metadata"
+        class=" shadow-sm"
+    ></video>
     <div class="text_container">
         <div>
             <h2>Build it Yourself</h2>
-            <p>Want to make a font into a set of letterpress typepieces? 
+            <p>
+                Want to make a font into a set of letterpress typepieces? 
                 Well, we have a guide for you. Download our files to the monospaced template, and let's start working. 
                 Fair warning, as of right now, we do not have a non-monospaced guide as you will have to do some extra edits to follow with the video, 
                 but we will make one soon!
@@ -73,8 +66,10 @@ import { Image } from "astro:assets";
         </div>
         <LinkBtn url="/buildit">Find the Files and Build Guide Here</LinkBtn>
     </div>
-</section>
-<section id="shop" class="paper_section">
+  </section>
+
+  <section id="shop" class="paper_section">
+    <Image src="/typepieces_3.webp" alt="Shop Typepieces" width={1200} height={800} />
     <div class="text_container">
         <div>
             <h2>Buy it Pre-Built</h2>
@@ -90,18 +85,42 @@ import { Image } from "astro:assets";
             <LinkBtn url="/q&a">Make a Request Here</LinkBtn>
         </div>
     </div>
-</section>
-<section id="inspo" class="paper_section">
-    <div class="text_container">
+  </section>
+
+  <section id="inspo" class="paper_section justify-center">
+    <div class="text_container !items-center max-w-2xl text-center">
         <div>
             <h2>Learn More</h2>
             <p>
                 Wanna learn about other projects like our own? 
-                We have a list and explanation of each of our inspirations and friends in the community. 
             </p>
         </div>
         <LinkBtn url="/inspiration">Find our Inspiration Here</LinkBtn>
     </div>
-</section>
+  </section>
 
 </BaseLayout>
+
+<style>
+    #action, #concerns, #build, #shop, #inspo {
+        flex-direction: column;
+    }
+
+    @media (min-width: 700px) {
+        #action, #build, #shop {
+            flex-direction: row;
+        }
+
+        /* Reverse Build for the visual Z-pattern */
+        #build {
+            flex-direction: row-reverse;
+        }
+
+        video, img {
+            max-width: 50%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+        }
+    }
+</style>
