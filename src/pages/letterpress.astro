@@ -17,25 +17,27 @@ import LetterpressFloat from "../components/letterpressFloat.svelte";
     </DigitalBackground>
 
     <section id="action" class="paper_section">
-        <Image src="/typepieces_1.JPG" alt="" width={1200} height={800} />
-        <div class="text_container">
-            <h2>Press in Action</h2>
-            <p>The press has been run through many tests, both checking its ability to work and to durability under stress. 
-                Working well with simple prints, the press was designed to be within the standards of other small sheet letterpresses. 
-                This means you can use all typepieces on the press and even some chases fill nicely within our press.
-            </p>
-        </div>
-    </section>
-
-    <section id="build" class="paper_section">
         <video 
-            src="/typepieces_2.mov" 
+            src="/letterpress_2.mov" 
             controls 
             preload="metadata"
             class="shadow-sm border border-[var(--color-paper-content)]/10"
         >
         <p>Your browser does not support the video tag. <a href="/typepieces_2.mov">Download the video instead.</a></p>
         </video>
+        <div class="text_container">
+            <div>
+                <h2>Press in Action</h2>
+                <p>The press has been run through many tests, both checking its ability to work and to durability under stress. 
+                    Working well with simple prints, the press was designed to be within the standards of other small sheet letterpresses. 
+                    This means you can use all typepieces on the press and even some chases fill nicely within our press.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="build" class="paper_section">
+        <Image src="/products-3.webp" alt="" width={1200} height={800} />
         <div class="text_container">
             <div>
                 <h2>Build it Yourself</h2>
@@ -50,15 +52,24 @@ import LetterpressFloat from "../components/letterpressFloat.svelte";
     </section>
 
     <section id="shop" class="paper_section">
-        <Image src="/typepieces_3.webp" alt="" width={1200} height={800} />
+        <video 
+            src="/letterpress_1.mov" 
+            controls 
+            preload="metadata"
+            class="shadow-sm border border-[var(--color-paper-content)]/10"
+        >
+        <p>Your browser does not support the video tag. <a href="/typepieces_2.mov">Download the video instead.</a></p>
+        </video>       
         <div class="text_container">
-            <h2>Buy it Pre-Built</h2>
-            <p>
-                Don’t have a 3D printer by want to learn, experiment, and play with a letterpress. 
-                Buy our pre-printed letterpress press from us for a little over the cost of printing,  
-                buying material, and shipping. If you're not a huge fan of what we have, but like the concept. 
-                We offer custom requests, a made press or typeface to your liking.
-            </p>            
+            <div>
+                <h2>Buy it Pre-Built</h2>
+                <p>
+                    Don’t have a 3D printer by want to learn, experiment, and play with a letterpress. 
+                    Buy our pre-printed letterpress press from us for a little over the cost of printing,  
+                    buying material, and shipping. If you're not a huge fan of what we have, but like the concept. 
+                    We offer custom requests, a made press or typeface to your liking.
+                </p> 
+            </div>
             <div class="two_links">
                 <LinkBtn url="/shop">Visit our Shop</LinkBtn>
                 <LinkBtn url="/q&a">Make a Request Here</LinkBtn>

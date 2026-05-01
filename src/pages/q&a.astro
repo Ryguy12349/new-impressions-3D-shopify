@@ -1,39 +1,54 @@
 ---
 import DigitalBackground from "../components/DigitalBackground.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const title = "Q&A";
 import PageHead from "../components/PageHead.astro";
 
+const title = "Q&A";
 ---
 
 <BaseLayout title={title}>
 <PageHead h1={title}/>
-<div class="text_container">
-    Don’t want to build the press, and our prebuilt options aren’t enough! Make a custom request
-    Send Us a Custom Request
-</div>
+
+<section class="paper_section">
+    <div class="text_container">
+        <div>
+            <h2>Custom Requests</h2>
+            <p>
+                Don’t want to build the press, and our prebuilt options aren’t enough? 
+                Whether it's a custom typeface recovery or a specific modification to the press linkages, 
+                we're open to helping you get exactly what you need for your studio.
+            </p>
+        </div>
+    </div>
+</section>
+
 <DigitalBackground>
-    <div class="email-form text_container">
+    <div class="email-form text_container py-20">
         <h2>Send Me a Message</h2>
-        <p>Email us at our own email service at ******@newimpression.com, or fill out this form. If you need some guidance on what to write to us, look below and find our guide on what we need to know from you.</p>
-        <form name="contact" method="POST" netlify?>
+        <p>
+            Email us directly at <strong>******@newimpression.com</strong>, or fill out this form. 
+            If you need some guidance on what to include in a request, check out our guide below.
+        </p>
+
+        <form name="contact" method="POST" data-netlify="true">
             <div class="contact-sender-info">
-                <div class="contact-name-box">
-                    <label for="name" class="contact-label">Name:</label>
-                    <input type="text" id="name" name="name" class="contact-input" required>
+                <div class="contact-box flex-1">
+                    <label for="name" class="contact-label">Name</label>
+                    <input type="text" id="name" name="name" class="contact-input" required placeholder=" ">
                 </div>
-                <div class="contact-email-box">
-                    <label for="email" class="contact-label">Email:</label>
-                    <input type="email" id="email" name="email" class="contact-input" required>
+                <div class="contact-box flex-1">
+                    <label for="email" class="contact-label">Email</label>
+                    <input type="email" id="email" name="email" class="contact-input" required placeholder=" ">
                 </div>
             </div>
-            <div class="contact-message-box">
-                <label for="message" class="contact-label">Message:</label>
-                <textarea id="message" name="message" rows="4" class="contact-input" required></textarea>
+
+            <div class="contact-box w-full">
+                <label for="message" class="contact-label">Message</label>
+                <textarea id="message" name="message" rows="6" class="contact-input" required placeholder=" "></textarea>
             </div>
+
             <div class="contact-submit-box">
-                <input type="submit" id="submit" value="Submit">
+                <button type="submit" id="submit">Submit Request</button>
             </div>
         </form>
     </div>
@@ -42,39 +57,79 @@ import PageHead from "../components/PageHead.astro";
 </BaseLayout>
 
 <style>
-     .email-form{
+    .email-form {
+        max-width: 800px;
+        margin: auto;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        align-items: flex-start;
+        gap: 2rem;
     }
 
-    .email-form form{
+    .email-form form {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        width: 60%;
+        gap: 2rem;
+        width: 100%;
+        max-width: 800px;
     }
 
     .email-form h2, .email-form p {
         color: var(--color-digital-content);
     }
 
-    #message {
-        resize: vertical;
+    .contact-sender-info {
+        display: flex;
+        gap: 1.5rem;
     }
 
-    #name, #email, #message {
+    .contact-box {
+        position: relative;
+    }
+
+    .contact-label {
+        position: absolute;
+        top: -0.6rem;
+        left: 0.8rem;
+        font-family: 'Mallanna', sans-serif;
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: var(--color-digital-content);
+        background-color: var(--color-digital-bg);
+        padding: 0 0.5rem;
+        z-index: 1;
+    }
+
+    .contact-input {
         width: 100%;
+        font-family: 'Mallanna', sans-serif;
+        background-color: transparent;
+        border: 1px solid var(--color-digital-content);
+        border-radius: 0; /* Hard edges to match your new video style */
+        padding: 1rem;
+        color: var(--color-digital-content);
+        outline: none;
+    }
+
+    .contact-input:focus {
+        border-width: 2px;
+        padding: calc(1rem - 1px);
+    }
+
+    #message {
+        resize: vertical;
+        min-height: 150px;
     }
 
     #submit {
-        padding: .5rem 1rem;
+        padding: 0.75rem 2rem;
         border: 1px solid var(--color-digital-content);
-        border-radius: 5px;
-        background-color: var(--color-digital-bg);
+        background-color: transparent;
         color: var(--color-digital-content);
-        font-family: 'faustina variable', serif;
-        font-weight: bold;
+        font-family: 'Beastly', sans-serif;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.2s ease;
     }
 
     #submit:hover {
@@ -83,60 +138,15 @@ import PageHead from "../components/PageHead.astro";
     }
 
     .contact-submit-box {
-        align-self: flex-end;
-
+        align-self: flex-start; /* Aligned left to match text-container flow */
     }
 
-    .contact-sender-info {
-        display: flex;
-        flex-direction: row;
-        gap: .5rem;
-    }
-
-    .contact-name-box, .contact-email-box  {
-        position: relative;
-        margin-bottom: .5rem;
-        color: var(--color-digital-content);
-    }
-
-    .contact-message-box {
-        position: relative;
-        color: var(--color-digital-content);
-    }
-
-    .contact-label {
-        position: absolute;
-        top: -.75rem;
-        left: .75rem;
-        font-family: 'faustina variable', serif;
-        font-weight: bold;
-        color: var(--color-digital-content);
-        background-color: var(--color-digital-bg);
-        padding: 0 .5rem;
-    }
-
-    .contact-input{
-        font-family: 'faustina variable', serif;
-        background-color: var(--color-digital-bg);
-        border: 1px solid var(--color-digital-content);
-        border-radius: 5px;
-        padding: .5rem;
-    }
-
-    @media (max-width: 470px) {
+    @media (max-width: 700px) {
         .contact-sender-info {
             flex-direction: column;
         }
-
-        .business-card-scene {
-            --card-width: 280px;
-        }
-    
-        #submit{
-            font-size: 1rem;
-        }
-
-        .email-form form{
+        
+        .email-form form {
             width: 100%;
         }
     }
