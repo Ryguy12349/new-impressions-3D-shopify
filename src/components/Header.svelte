@@ -182,7 +182,7 @@
     cursor: pointer;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 820px) {
     #page-nav {
       position: fixed;
       z-index: 90;

@@ -11,7 +11,21 @@ const title = "Build It";
 
 <DigitalBackground>
     <div class="p-8 space-y-12">
-        <div class="aspect-video bg-[var(--color-digital-bg)] flex items-center justify-center">
+        <div class="text_container !items-start text-[var(--color-digital-content)] mb-8">
+            <h2>Download STL Files</h2>
+            <div class="flex flex-col md:flex-row gap-6 mt-4">
+                <a href="/new-impressions-letterpress_2.00.2.stl" download class="download-link">
+                    <span>New Impessions' Letterpress (v2.00.2)</span>
+                    <span class="icon"></span>
+                </a>
+                <a href="/new-impressions-font-set.stl" download class="download-link">
+                    <span>Monospaced Font Set</span>
+                    <span class="icon"></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="aspect-video bg-[var(--color-digital-bg)] flex items-center justify-center border border-[var(--color-digital-content)]">
             <p class="text-[var(--color-digital-content)] opacity-50 italic">Future Video 1: The Press</p>
         </div>
         <div class="text_container !items-start text-[var(--color-digital-content)]">
@@ -19,7 +33,7 @@ const title = "Build It";
             <p class="opacity-70">Transcripts pending upload...</p>
         </div>
 
-        <div class="aspect-video bg-[var(--color-digital-bg)] flex items-center justify-center">
+        <div class="aspect-video bg-[var(--color-digital-bg)] flex items-center justify-center border border-[var(--color-digital-content)]">
             <p class="text-[var(--color-digital-content)] opacity-50 italic">Future Video 2: Type Pieces</p>
         </div>
         <div class="text_container !items-start text-[var(--color-digital-content)]">
@@ -28,41 +42,71 @@ const title = "Build It";
         </div>
     </div>
 </DigitalBackground>
-    
+
 <section id="build" class="paper_section">
     <div class="text_container">
-        <h2>Build Concerns</h2>
         <div>
-            <h3>Legal & Intellectual Property</h3>
-            <p>
-                When building your own typepieces, copyright is the primary hurdle. Many typefaces have strict licensing regarding 3D reproduction. While this project provides monospaced templates to help you recover missing fonts or create new sets, you must ensure you have the right to digitize and print the specific letterforms you choose.
-            </p>
-        </div>
-        <div>
-            <h3>Mechanical Integrity</h3>
-            <p>
-                A 3D printed press is a study in stress management. The tension required for a clean "impression" can lead to backplate deformation or structural failure if tolerances aren't respected. It is vital to monitor the structural pegs and linkages for wear, as plastic components will inevitably fatigue faster than traditional cast-iron equipment.
-            </p>
+            <h2>Build Concerns</h2>
+            <div>
+                <h3>Legal & Intellectual Property</h3>
+                <p>
+                    When building your own typepieces, copyright is the primary hurdle. Many typefaces have strict licensing regarding 3D reproduction. While this project provides monospaced templates to help you recover missing fonts or create new sets, you must ensure you have the right to digitize and print the specific letterforms you choose.
+                </p>
+            </div>
+            <div>
+                <h3>Mechanical Integrity</h3>
+                <p>
+                    A 3D printed press is a study in stress management. The tension required for a clean "impression" can lead to backplate deformation or structural failure if tolerances aren't respected. It is vital to monitor the structural pegs and linkages for wear, as plastic components will inevitably fatigue faster than traditional cast-iron equipment.
+                </p>
+            </div>
         </div>
     </div>
 </section>
 
 <section id="issues" class="paper_section">
     <div class="text_container">
-        <h2>Material Worries</h2>
         <div>
-            <h3>Filament Fatigue & Shrinkage</h3>
-            <p>
-                Not all plastics are equal under pressure. Material shrinkage during the cooling process can throw off your tolerances, requiring precise calibration of your printer to ensure pegs fit securely. Furthermore, heat and friction from repeated use can cause PLA to soften or warp over time.
-            </p>
-        </div>
-        <div>
-            <h3>The Ink Connection</h3>
-            <p>
-                The interaction between 3D printing filaments and oil-based or rubber-based inks is a major variable. Some materials may degrade when exposed to certain solvents, while others may not hold ink consistently. We recommend using a TPU or rubber-based plate to provide the necessary "squish" for a proper transfer without snapping your rigid printed parts.
-            </p>
+            <h2>Material Worries</h2>
+            <div>
+                <h3>Filament Fatigue & Shrinkage</h3>
+                <p>
+                    Not all plastics are equal under pressure. Material shrinkage during the cooling process can throw off your tolerances, requiring precise calibration of your printer to ensure pegs fit securely. Furthermore, heat and friction from repeated use can cause PLA to soften or warp over time.
+                </p>
+            </div>
+            <div>
+                <h3>The Ink Connection</h3>
+                <p>
+                    The interaction between 3D printing filaments and oil-based or rubber-based inks is a major variable. Some materials may degrade when exposed to certain solvents, while others may not hold ink consistently. We recommend using a TPU or rubber-based plate to provide the necessary "squish" for a proper transfer without snapping your rigid printed parts.
+                </p>
+            </div>
         </div>
     </div>
 </section>
 
+<style>
+    .download-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1.25rem;
+        border: 1px solid var(--color-digital-content);
+        color: var(--color-digital-content);
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .download-link:hover {
+        background-color: var(--color-digital-content);
+        color: var(--color-digital-bg);
+    }
+
+    .download-link .icon {
+        width: 24px;
+        height: 24px;
+        background-color: currentColor;
+        -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-315.33 284.67-510.67l47.33-48L446.67-444v-356h66.66v356L628-558.67l47.33 48L480-315.33ZM226.67-160q-27 0-46.84-19.83Q160-199.67 160-226.67V-362h66.67v135.33h506.66V-362H800v135.33q0 27-19.83 46.84Q760.33-160 733.33-160H226.67Z"/></svg>') no-repeat center;
+        mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-315.33 284.67-510.67l47.33-48L446.67-444v-356h66.66v356L628-558.67l47.33 48L480-315.33ZM226.67-160q-27 0-46.84-19.83Q160-199.67 160-226.67V-362h66.67v135.33h506.66V-362H800v135.33q0 27-19.83 46.84Q760.33-160 733.33-160H226.67Z"/></svg>') no-repeat center;
+        mask-size: contain;
+    }
+</style>
 </BaseLayout>

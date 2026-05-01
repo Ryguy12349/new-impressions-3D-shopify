@@ -1,20 +1,15 @@
 <script lang="ts">
-  let { title = "Documentation" } = $props();
-
   let activeIndex = $state(0);
   let container: HTMLUListElement;
   let elements: HTMLLIElement[] = $state([]);
 
-  // 1. GLOBAL "BACK TO TOP" LOGIC
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // 2. INTERSECTION OBSERVER & CLICK LISTENER
   $effect(() => {
     if (!container) return;
 
-    // Tracker for the nav carousel
     const navObserver = new IntersectionObserver(
       (entries) => {
         const entry = entries.find((e) => e.isIntersecting);
@@ -28,7 +23,6 @@
 
     elements.forEach((el) => el && navObserver.observe(el));
 
-    // Global listener for H3 clicks to return to top
     const handleHeaderClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (target.tagName === 'H3' && target.closest('.timeline-block')) {
@@ -63,27 +57,33 @@
       });
     }
   }
+
+  const dates = ["9-8", "9-15", "9-22", "9-29", "10-6", "10-20", "10-27", "11-10", "12-8", "Winter Inbetweens", "3-5", "3-26", "Spring Break", "4-9"];
 </script>
 
 <nav class="timeline-nav paper_pattern">
   <div class="nav-header">
     <h2>Timeline</h2>
-    <button id="previousbtn" onclick={goPrevious} disabled={activeIndex === 0} aria-label="Previous date">
-        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#04040f">
-          <path d="M560.67-240 320-480.67l240.67-240.66L608-674 414.67-480.67 608-287.33 560.67-240Z"/>
-        </svg>
-    </button>
-    <button id="Nextbtn" onclick={goNext} disabled={activeIndex === elements.length - 1} aria-label="Next date">
-        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#04040f">
-          <path d="M521.33-480.67 328-674l47.33-47.33L616-480.67 375.33-240 328-287.33l193.33-193.34Z"/>
-        </svg>
-    </button>
+    <div class="nav-btns">
+      <button onclick={goPrevious} disabled={activeIndex === 0} aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="currentColor">
+            <path d="M560.67-240 320-480.67l240.67-240.66L608-674 414.67-480.67 608-287.33 560.67-240Z"/>
+          </svg>
+      </button>
+      <button onclick={goNext} disabled={activeIndex === elements.length - 1} aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="currentColor">
+            <path d="M521.33-480.67 328-674l47.33-47.33L616-480.67 375.33-240 328-287.33l193.33-193.34Z"/>
+          </svg>
+      </button>
+    </div>
   </div>
   
   <ul bind:this={container}>
-    {#each ["9-8", "9-15", "9-22", "9-29", "10-6", "10-20", "10-27", "11-10", "12-8", "Winter Inbetweens", "3-5", "3-26", "Spring Break", "4-9"] as date, i}
+    {#each dates as date, i}
       <li bind:this={elements[i]}>
-        <a href="#{date.toLowerCase().replace(' ', '-')}">{date.replace('-', '/')}</a>
+        <a href="#{date.toLowerCase().replace(' ', '-')}" class={activeIndex === i ? 'active' : ''}>
+          {date.replace('-', '/')}
+        </a>
       </li>
     {/each}
   </ul>
@@ -215,54 +215,44 @@
 </div>
 
 <style>
-  .timeline-block {
-    padding: 5rem 0.5rem;
-    scroll-margin-top: 140px; 
-  }
-
-  .timeline-block h3 {
-    cursor: pointer;
-    display: inline-block;
-    transition: transform 0.2s ease;
-  }
-
-  .timeline-block h3:hover {
-    transform: translateY(-3px);
-    color: var(--color-paper-link, #007bff);
-  }
-
   .timeline-nav {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
     position: sticky;
     top: 3.5rem;
     z-index: 50;
+    /* Removed background - paper_pattern handles it */
     border-bottom: 1px solid var(--color-paper-content);
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
   }
 
   .nav-header {
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 1rem;
   }
 
-  #previousbtn, #Nextbtn {
-    position: absolute;
-    bottom: -2.75rem;
+  .nav-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .nav-btns {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  button {
     background: none;
     border: none;
+    cursor: pointer;
+    color: var(--color-paper-content);
+    display: flex;
+    align-items: center;
+    padding: 0;
   }
-
-  #previousbtn { left: 0; }
-  #Nextbtn { right: 0; }
 
   button:disabled {
     opacity: 0.1;
-    cursor: not-allowed;
   }
 
   .timeline-nav ul {
@@ -271,45 +261,57 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
   }
 
-  .timeline-nav ul::-webkit-scrollbar { display: none; }
-
   .timeline-nav ul li {
-    flex: 0 0 100vw;
+    flex: 0 0 100%;
     text-align: center;
     scroll-snap-align: center;
   }
 
   .timeline-nav ul li a {
     display: block;
-    padding: 0.25rem 0;
-    font-weight: 500;
     text-decoration: none;
-    color: inherit;
+    color: var(--color-paper-content);
+    opacity: 0.3;
+  }
+
+  .timeline-nav ul li a.active {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  .timeline-block {
+    padding: 4rem 1rem;
+    scroll-margin-top: 120px;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   .img_grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     margin-top: 1rem;
   }
 
   .img_grid img, .img_grid video {
     width: 100%;
-    height: 300px;
+    max-width: 500px;
+    height: auto;
+    aspect-ratio: 1/1;
     object-fit: cover;
-    border-radius: 4px;
     border: 1px solid var(--color-paper-content);
-    /* Subtle random rotation placeholder */
-    transform: rotate(calc(var(--random-rotation, 0deg)));
+    border-radius: 0;
   }
 
   @media (min-width: 700px) {
     .timeline-nav ul li {
-        flex: 0 0 33.33vw; /* Show more dates on desktop */
+      flex: 0 0 33.33%;
+    }
+
+    .img_grid {
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>
